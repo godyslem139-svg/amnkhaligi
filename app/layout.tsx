@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header"; 
+import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton"; // <-- إضافة استدعاء زر الواتساب هنا
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "أساس الأمن الخليجي | للسباكة والتسربات والعزل",
-  description: "شركة أساس الأمن الخليجي لخدمات السباكة، كشف التسربات، العزل، الصيانة، والترميم باحترافية عالية.",
+  title: "0501206816 شركة عزل و كشف تسربات في الخرج |ضمان معتمد 10سنين",
+  description: "شركة عزل و كشف تسربات في الخرج . عزل خزانات و كشف تسربات المياه و ترميم و غسيل سجاد و مفروشات و وتسليك مجارى و رش مبيدات حشرية متخصصة و معتمدة | 0501206816",
 };
 
 export default function RootLayout({
@@ -45,13 +47,19 @@ export default function RootLayout({
         {/* طبقة تعتيم ثابته فوق الفيديو ليكون النص مقروءاً دائماً */}
         <div className="fixed top-0 left-0 w-full h-screen bg-gradient-to-b from-[#030b1c]/80 via-[#030b1c]/70 to-[#030b1c]/90 -z-10"></div>
 
-        {/* الهيدر */}
+        {/* الهيدر يظهر في الأعلى */}
         <Header />
         
         {/* المحتوى المتغير لكل صفحة */}
         <main className="flex-grow relative z-10">
           {children}
         </main>
+
+        {/* الفوتر يظهر في الأسفل */}
+        <Footer />
+
+        {/* زر الواتساب العائم يظهر فوق كل شيء */}
+        <WhatsAppButton />
 
       </body>
     </html>

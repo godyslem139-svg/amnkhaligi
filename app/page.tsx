@@ -4,6 +4,8 @@ import About from "@/components/About";
 import Features from "@/components/Features";
 import Portfolio from "@/components/Portfolio";
 import WorkVideos from "@/components/WorkVideos";
+import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ"; // استدعاء ملف الأسئلة الشائعة
 
 export default function Home() {
   return (
@@ -14,6 +16,8 @@ export default function Home() {
       <Features />
       <Portfolio />
       <WorkVideos />
+      <Testimonials />
+      <FAQ /> {/* عرض قسم الأسئلة الشائعة هنا */}
     </>
   );
 }

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Phone, ArrowLeft } from "lucide-react";
+import { Menu, X, Phone, ArrowLeft, ChevronDown } from "lucide-react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,24 +28,61 @@ export default function Header() {
 
   return (
     <header className="bg-[#030b1c] border-b-2 border-[#00BFFF] sticky top-0 z-50 w-full" dir="rtl">
+      
       {/* الشريط العلوي الأساسي */}
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-24 relative z-50 bg-[#030b1c]">
           
-          {/* اللوجو */}
-          <Link href="/" title="الصفحة الرئيسية لشركة أساس الأمن الخليجي" className="flex-shrink-0">
-            <Image
-              src="/logo.png"
-              alt="شعار شركة أساس الأمن الخليجي للسباكة والتسربات والعزل"
-              title="شعار أساس الأمن الخليجي"
-              width={160}
-              height={60}
-              className="object-contain"
-              priority
-            />
-          </Link>
+          {/* الجانب الأيمن: اللوجو + قائمة الكمبيوتر الأفقية */}
+          <div className="flex items-center gap-80">
+            {/* اللوجو */}
+            <Link href="/" title="الصفحة الرئيسية لشركة أساس الأمن الخليجي" className="flex-shrink-0">
+              <Image
+                src="/logo.png"
+                alt="شعار شركة أساس الأمن الخليجي"
+                title="شعار أساس الأمن الخليجي"
+                width={160}
+                height={60}
+                className="object-contain"
+                priority
+              />
+            </Link>
 
-          {/* الأزرار على اليسار وأيقونة الهمبرجر */}
+            {/* القائمة العادية للكمبيوتر (مخفية في الموبايل وتظهر في شاشات lg) */}
+            <nav className="hidden lg:flex items-center gap-8">
+              <Link href="/" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">الرئيسية</Link>
+              
+              {/* قائمة الخدمات المنسدلة للكمبيوتر */}
+              <div className="relative group h-24 flex items-center">
+                <button className="text-white group-hover:text-[#D4AF37] font-bold text-lg transition-colors flex items-center gap-1">
+                  خدماتنا
+                  <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                </button>
+                
+                {/* النافذة المنسدلة (Dropdown) */}
+                <div className="absolute top-full right-0 w-64 bg-[#061124] border border-[#00BFFF]/30 border-t-2 border-t-[#D4AF37] rounded-b-xl shadow-[0_15px_40px_rgba(0,0,0,0.8)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col py-2 overflow-hidden">
+                  {servicesLinks.map((service, index) => (
+                    <Link
+                      key={index}
+                      href={service.slug}
+                      title={service.title}
+                      className="px-4 py-3 text-white hover:bg-[#00BFFF]/10 hover:text-[#D4AF37] font-semibold transition-colors flex items-center justify-between group/link border-b border-gray-700/30 last:border-0"
+                    >
+                      {service.name}
+                      <ArrowLeft className="w-4 h-4 text-[#00BFFF]/50 group-hover/link:text-[#D4AF37] opacity-0 group-hover/link:opacity-100 group-hover/link:-translate-x-1 transition-all" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <Link href="/portfolio" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">أعمالنا</Link>
+              <Link href="/blog" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">المقالات</Link>
+              <Link href="/about" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">من نحن</Link>
+              <Link href="/contact" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">تواصل معنا</Link>
+            </nav>
+          </div>
+
+          {/* الجانب الأيسر: أزرار التواصل + أيقونة الهمبرجر للموبايل */}
           <div className="flex items-center gap-3 md:gap-5">
             
             {/* حساب التيك توك */}
@@ -71,11 +108,11 @@ export default function Header() {
               <span dir="ltr">+966 50 120 6816</span>
             </Link>
 
-            {/* زر القائمة (الهمبرجر) باللون اللبني والذهبي */}
+            {/* زر القائمة (الهمبرجر) - يظهر للموبايل فقط مخفي في شاشات lg */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               title={isMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
-              className="flex items-center justify-center w-12 h-12 rounded-lg bg-[#00BFFF]/10 border border-[#00BFFF] text-[#00BFFF] hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all duration-300"
+              className="lg:hidden flex items-center justify-center w-12 h-12 rounded-lg bg-[#00BFFF]/10 border border-[#00BFFF] text-[#00BFFF] hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all duration-300"
             >
               {isMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
             </button>
@@ -83,22 +120,22 @@ export default function Header() {
         </div>
       </div>
 
-      {/* القائمة المنسدلة (Mega Menu) - تفتح للأسفل بمقاس ربع الصفحة تقريباً */}
+      {/* قائمة الموبايل المنسدلة (تظهر للموبايل فقط) */}
       <div 
-        className={`absolute top-full left-0 w-full bg-[#061124] border-b-4 border-[#D4AF37] shadow-[0_20px_40px_rgba(0,0,0,0.7)] transition-all duration-500 ease-in-out overflow-hidden z-40 ${
-          isMenuOpen ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
+        className={`lg:hidden absolute top-full left-0 w-full bg-[#061124] border-b-4 border-[#D4AF37] shadow-[0_20px_40px_rgba(0,0,0,0.7)] transition-all duration-500 ease-in-out overflow-hidden z-40 ${
+          isMenuOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="container mx-auto px-4 lg:px-8 py-8 lg:py-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <div className="container mx-auto px-4 py-8">
+          <div className="flex flex-col gap-10">
             
-            {/* العمود الأيمن: القائمة الرئيسية */}
-            <div className="lg:col-span-4 lg:border-l border-[#00BFFF]/30 lg:pl-8">
+            {/* القائمة الرئيسية للموبايل */}
+            <div>
               <h3 className="text-[#00BFFF] font-bold text-lg mb-6 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
                 القائمة الرئيسية
               </h3>
-              <nav className="flex flex-col gap-5">
+              <nav className="flex flex-col gap-4">
                 {mainLinks.map((link, index) => (
                   <Link
                     key={index}
@@ -107,20 +144,20 @@ export default function Header() {
                     onClick={() => setIsMenuOpen(false)}
                     className="text-white hover:text-[#00BFFF] font-semibold text-xl w-fit transition-colors duration-300 flex items-center gap-3 group"
                   >
-                    <span className="w-1 h-1 rounded-full bg-gray-500 group-hover:bg-[#D4AF37] transition-colors"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-gray-500 group-hover:bg-[#D4AF37] transition-colors"></span>
                     {link.name}
                   </Link>
                 ))}
               </nav>
             </div>
 
-            {/* العمود الأيسر: الخدمات الاحترافية على شكل كروت */}
-            <div className="lg:col-span-8">
+            {/* الخدمات للموبايل */}
+            <div>
               <h3 className="text-[#00BFFF] font-bold text-lg mb-6 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
                 خدماتنا الاحترافية
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {servicesLinks.map((service, index) => (
                   <Link
                     key={index}
