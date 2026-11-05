@@ -1,10 +1,18 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, ArrowLeft } from "lucide-react";
 
 export default function Footer() {
+  // إنشاء حالة (State) لحفظ السنة
+  const [currentYear, setCurrentYear] = useState<string>("");
+
+  // حساب السنة فقط في المتصفح (Client-side) لتجنب أخطاء الـ Build
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear().toString());
+  }, []);
+
   const mainLinks = [
     { name: "الرئيسية", slug: "/", title: "الصفحة الرئيسية" },
     { name: "أعمالنا", slug: "/portfolio", title: "أعمالنا السابقة" },
@@ -23,18 +31,15 @@ export default function Footer() {
     { name: "غسيل خزانات", slug: "/services/tank-cleaning" },
   ];
 
-  // كلاس موحد للمستطيل المضيء بالذهبي لضمان تناسق كل العناصر
   const glowingBoxStyle = "flex items-center gap-3 bg-[#061124] border border-[#D4AF37]/50 rounded-xl px-4 py-3 text-gray-300 hover:text-white hover:border-[#D4AF37] shadow-[0_0_10px_rgba(212,175,55,0.2)] hover:shadow-[0_0_20px_rgba(212,175,55,0.6)] transition-all duration-300 group";
 
   return (
     <footer className="relative bg-[#020612] border-t-2 border-[#D4AF37] pt-16 pb-8 overflow-hidden" dir="rtl">
-      {/* تأثير إضاءة خافت في خلفية الفوتر */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-[#D4AF37]/5 blur-[100px] rounded-full pointer-events-none"></div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-12">
           
-          {/* العمود الأول: اللوجو ومعلومات التواصل */}
           <div className="lg:col-span-4 flex flex-col gap-6">
             <Link href="/" title="الصفحة الرئيسية لشركة أساس الأمن الخليجي" className="flex items-center gap-3 w-fit mb-2">
               <Image
@@ -59,7 +64,6 @@ export default function Footer() {
             </p>
 
             <div className="flex flex-col gap-3">
-              {/* زر الواتساب معدل */}
               <Link href="https://wa.me/966501206816" target="_blank" className={glowingBoxStyle}>
                 <div className="w-8 h-8 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-[#030b1c] transition-colors">
                   <Phone className="w-4 h-4" />
@@ -67,7 +71,6 @@ export default function Footer() {
                 <span className="font-bold">راسلنا على الواتساب</span>
               </Link>
               
-              {/* التيك توك */}
               <Link href="https://www.tiktok.com/@amnkhaliji" target="_blank" className={glowingBoxStyle}>
                 <div className="w-8 h-8 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-[#030b1c] transition-colors">
                   <svg fill="currentColor" viewBox="0 0 24 24" className="w-4 h-4">
@@ -79,7 +82,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* العمود الثاني: القائمة الرئيسية */}
           <div className="lg:col-span-3">
             <h3 className="text-white font-bold text-lg mb-6 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#00BFFF]"></span>
@@ -95,7 +97,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* العمود الثالث: خدماتنا */}
           <div className="lg:col-span-5">
             <h3 className="text-white font-bold text-lg mb-6 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#00BFFF]"></span>
@@ -113,10 +114,9 @@ export default function Footer() {
 
         </div>
 
-        {/* حقوق الملكية وحقوق التصميم */}
         <div className="border-t border-[#D4AF37]/20 pt-6 mt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-400 text-sm">
-            جميع الحقوق محفوظة © {new Date().getFullYear()} شركة <span className="text-[#D4AF37] font-bold">أساس الأمن الخليجي</span>
+            جميع الحقوق محفوظة © {currentYear} شركة <span className="text-[#D4AF37] font-bold">أساس الأمن الخليجي</span>
           </p>
           <div className="text-gray-400 text-sm flex items-center gap-1">
             صنع بكل إتقان بواسطة 
