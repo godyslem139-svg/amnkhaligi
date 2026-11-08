@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header"; 
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton"; // <-- إضافة استدعاء زر الواتساب هنا
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,8 +16,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "0501206816 شركة عزل و كشف تسربات في الخرج |ضمان معتمد 10سنين",
+  title: "0501206816 شركة عزل و كشف تسربات في الخرج | ضمان معتمد 10سنين",
   description: "شركة عزل و كشف تسربات في الخرج . عزل خزانات و كشف تسربات المياه و ترميم و غسيل سجاد و مفروشات و وتسليك مجارى و رش مبيدات حشرية متخصصة و معتمدة | 0501206816",
+  // أضفنا كود التحقق الخاص بجوجل هنا مباشرة
+  verification: {
+    google: "N8G70FJVov5wafugVvSDCi0v8tizSYWmEiEtqOdXbJE",
+  },
 };
 
 export default function RootLayout({
@@ -32,7 +36,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#030b1c]">
-        
+
         {/* فيديو الخلفية الثابت للموقع بالكامل */}
         <video
           autoPlay
@@ -49,7 +53,7 @@ export default function RootLayout({
 
         {/* الهيدر يظهر في الأعلى */}
         <Header />
-        
+
         {/* المحتوى المتغير لكل صفحة */}
         <main className="flex-grow relative z-10">
           {children}
