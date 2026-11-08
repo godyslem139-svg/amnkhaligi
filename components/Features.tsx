@@ -48,7 +48,6 @@ export default function Features() {
     setActive((prev) => (prev === 0 ? features.length - 1 : prev - 1));
   };
 
-  // التحريك التلقائي
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
@@ -61,7 +60,6 @@ export default function Features() {
     <section className="relative w-full py-24 overflow-hidden" dir="rtl">
       <div className="container mx-auto px-4">
         
-        {/* عنوان السكشن */}
         <div className="text-center mb-16 relative z-10">
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-md">
             لماذا تختار <span className="text-[#D4AF37]">أساس الأمن</span>؟
@@ -69,14 +67,12 @@ export default function Features() {
           <div className="w-24 h-1 bg-[#00BFFF] mx-auto rounded-full"></div>
         </div>
 
-        {/* المستطيل الكبير اللبني المضيء بالذهبي الذي يحتضن الكروت */}
         <div 
           className="relative w-full max-w-[1300px] mx-auto bg-gradient-to-b from-[#00BFFF]/20 to-[#00BFFF]/5 border-2 border-[#D4AF37] rounded-[2.5rem] shadow-[0_0_50px_rgba(212,175,55,0.4)] backdrop-blur-md px-4 py-12 md:py-16 lg:px-12 z-10"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
           
-          {/* حاوية الكروت 3D */}
           <div className="relative w-full max-w-6xl mx-auto h-[450px] [perspective:1200px] z-10">
             {features.map((item, index) => {
               const isActive = index === active;
@@ -148,7 +144,6 @@ export default function Features() {
             })}
           </div>
 
-          {/* أزرار التنقل (الأسهم والترقيم) داخل المستطيل الكبير */}
           <div className="flex justify-center items-center gap-8 mt-12 relative z-10">
             <button 
               onClick={handlePrev} 

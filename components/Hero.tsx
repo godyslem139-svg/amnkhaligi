@@ -6,7 +6,6 @@ export default function Hero() {
   return (
     <section className="relative w-full h-[calc(100vh-96px)] min-h-[600px] flex items-center justify-center overflow-hidden" dir="rtl">
       
-      {/* فيديو الخلفية */}
       <video
         autoPlay
         loop
@@ -18,26 +17,20 @@ export default function Hero() {
         متصفحك لا يدعم تشغيل الفيديو.
       </video>
 
-      {/* طبقة التعتيم (Overlay) لجعل النص مقروءاً */}
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#030b1c]/80 via-[#030b1c]/60 to-[#030b1c]/90 z-10"></div>
 
-      {/* المحتوى */}
       <div className="container mx-auto px-4 relative z-20 text-center flex flex-col items-center">
         
-        {/* العنوان الرئيسي */}
         <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 leading-tight drop-shadow-lg">
           شركة <span className="text-[#00BFFF]">أساس الأمن</span> <span className="text-[#D4AF37]">الخليجي</span>
         </h1>
         
-        {/* الوصف */}
         <p className="text-lg md:text-2xl text-gray-200 mb-10 max-w-3xl leading-relaxed drop-shadow-md">
           شركة عزل وكشف تسربات في الخرج متخصصة، تقدم حلولاً احترافية بمعايير سعودية عالية الجودة.
         </p>
 
-        {/* أزرار الدعوة لاتخاذ إجراء (CTAs) */}
         <div className="flex flex-col sm:flex-row items-center gap-5 w-full sm:w-auto">
           
-          {/* زر الواتساب (أساسي) */}
           <Link
             href="https://wa.me/966501206816"
             target="_blank"
@@ -48,7 +41,6 @@ export default function Hero() {
             <span>تواصل معنا الآن</span>
           </Link>
 
-          {/* زر صفحة الأعمال (ثانوي) */}
           <Link
             href="/portfolio"
             title="شاهد سابقة أعمالنا"

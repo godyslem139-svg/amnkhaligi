@@ -7,10 +7,8 @@ export default function About() {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
-          {/* الجانب الأيمن: المحتوى النصي القوي */}
           <div className="flex flex-col gap-6">
             
-            {/* عنوان السكشن */}
             <div className="inline-flex items-center gap-3">
               <span className="w-12 h-1 rounded-full bg-[#00BFFF]"></span>
               <span className="text-[#00BFFF] font-bold text-lg tracking-wider">من نحن</span>
@@ -25,7 +23,6 @@ export default function About() {
               نحن لا نقدم مجرد خدمات صيانة، بل نصنع حلولاً هندسية مبتكرة ومستدامة لحماية بنيتك التحتية. بخبرات متراكمة واعتمادنا على أحدث التقنيات العالمية، نضمن لك التخلص النهائي من مشاكل التسربات وتقديم عزل متكامل يطيل من عمر عقارك، كل ذلك بمعايير سعودية معتمدة.
             </p>
             
-            {/* نقاط القوة (المميزات) */}
             <div className="flex flex-col gap-5 mt-4">
               
               <div className="flex items-start gap-4">
@@ -61,7 +58,6 @@ export default function About() {
             </div>
           </div>
 
-          {/* الجانب الأيسر: الفيديو التوضيحي */}
           <div className="relative w-full h-[500px] lg:h-[650px] rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(0,191,255,0.15)] border-2 border-[#D4AF37]/40 group">
             
             <video
@@ -75,10 +71,8 @@ export default function About() {
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
             
-            {/* تدرج لوني ناعم فوق الفيديو لدمجه مع التصميم */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#030b1c] via-[#030b1c]/20 to-transparent opacity-90"></div>
             
-            {/* كارت الثقة (Glassmorphism) عائم فوق الفيديو */}
             <div className="absolute bottom-6 right-6 left-6 bg-[#030b1c]/70 backdrop-blur-md border border-[#00BFFF]/40 rounded-2xl p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 shadow-xl">
               <div className="flex items-center justify-between text-center">
                 <div className="flex-1">

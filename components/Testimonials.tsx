@@ -4,7 +4,6 @@ import React from "react";
 import { Star, Quote } from "lucide-react";
 
 export default function Testimonials() {
-  // داتا وهمية واقعية تناسب خدمات الشركة في الخرج
   const testimonials = [
     {
       id: 1,
@@ -38,13 +37,11 @@ export default function Testimonials() {
     },
   ];
 
-  // تكرار المصفوفة لضمان استمرارية حركة الشريط (Infinite Loop)
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
     <section className="relative w-full py-24 overflow-hidden" dir="rtl">
       
-      {/* ستايل حركة الشريط الخاص بآراء العملاء */}
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes ticker-testimonials {
           0% { transform: translateX(0); }
@@ -70,7 +67,6 @@ export default function Testimonials() {
         <div className="w-24 h-1 bg-[#00BFFF] mx-auto rounded-full"></div>
       </div>
 
-      {/* حاوية شريط الكروت المتحرك */}
       <div className="ticker-container-test relative w-full overflow-hidden z-10 py-4">
         <div className="animate-ticker-test gap-6 px-3">
           {duplicatedTestimonials.map((testimonial, index) => (
@@ -78,24 +74,20 @@ export default function Testimonials() {
               key={index}
               className="relative w-[320px] md:w-[420px] bg-[#061124]/80 backdrop-blur-md border border-[#00BFFF]/20 hover:border-[#D4AF37] rounded-3xl p-8 flex flex-col flex-shrink-0 group transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(212,175,55,0.15)] overflow-hidden"
             >
-              {/* أيقونة الاقتباس الكبيرة الشفافة في الخلفية */}
               <div className="absolute top-4 left-4 opacity-5 group-hover:opacity-10 transition-opacity duration-300 text-[#00BFFF]">
                 <Quote className="w-24 h-24 rotate-180" />
               </div>
 
-              {/* النجوم وتقييم العميل */}
               <div className="flex items-center gap-1 mb-6 relative z-10">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 text-[#D4AF37]" fill="#D4AF37" />
                 ))}
               </div>
 
-              {/* نص الرأي */}
               <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-8 relative z-10 flex-grow italic">
                 "{testimonial.text}"
               </p>
 
-              {/* بيانات العميل (الاسم والصفة) */}
               <div className="flex items-center gap-4 relative z-10 mt-auto border-t border-gray-700/50 pt-5">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#00BFFF] to-[#D4AF37] flex items-center justify-center text-[#030b1c] font-bold text-xl flex-shrink-0">
                   {testimonial.name.charAt(0)}

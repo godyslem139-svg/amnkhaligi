@@ -5,10 +5,8 @@ import Image from "next/image";
 import { Phone, ArrowLeft } from "lucide-react";
 
 export default function Footer() {
-  // إنشاء حالة (State) لحفظ السنة
   const [currentYear, setCurrentYear] = useState<string>("");
 
-  // حساب السنة فقط في المتصفح (Client-side) لتجنب أخطاء الـ Build
   useEffect(() => {
     setCurrentYear(new Date().getFullYear().toString());
   }, []);

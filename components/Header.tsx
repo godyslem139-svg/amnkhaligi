@@ -29,13 +29,10 @@ export default function Header() {
   return (
     <header className="bg-[#030b1c] border-b-2 border-[#00BFFF] sticky top-0 z-50 w-full" dir="rtl">
       
-      {/* الشريط العلوي الأساسي */}
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-24 relative z-50 bg-[#030b1c]">
           
-          {/* الجانب الأيمن: اللوجو + قائمة الكمبيوتر الأفقية */}
           <div className="flex items-center gap-80">
-            {/* اللوجو */}
             <Link href="/" title="الصفحة الرئيسية لشركة أساس الأمن الخليجي" className="flex-shrink-0">
               <Image
                 src="/logo.png"
@@ -48,18 +45,15 @@ export default function Header() {
               />
             </Link>
 
-            {/* القائمة العادية للكمبيوتر (مخفية في الموبايل وتظهر في شاشات lg) */}
             <nav className="hidden lg:flex items-center gap-8">
               <Link href="/" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">الرئيسية</Link>
               
-              {/* قائمة الخدمات المنسدلة للكمبيوتر */}
               <div className="relative group h-24 flex items-center">
                 <button className="text-white group-hover:text-[#D4AF37] font-bold text-lg transition-colors flex items-center gap-1">
                   خدماتنا
                   <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                 </button>
                 
-                {/* النافذة المنسدلة (Dropdown) */}
                 <div className="absolute top-full right-0 w-64 bg-[#061124] border border-[#00BFFF]/30 border-t-2 border-t-[#D4AF37] rounded-b-xl shadow-[0_15px_40px_rgba(0,0,0,0.8)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col py-2 overflow-hidden">
                   {servicesLinks.map((service, index) => (
                     <Link
@@ -82,10 +76,8 @@ export default function Header() {
             </nav>
           </div>
 
-          {/* الجانب الأيسر: أزرار التواصل + أيقونة الهمبرجر للموبايل */}
           <div className="flex items-center gap-3 md:gap-5">
             
-            {/* حساب التيك توك */}
             <Link
               href="https://www.tiktok.com/@amnkhaliji"
               target="_blank"
@@ -97,7 +89,6 @@ export default function Header() {
               </svg>
             </Link>
 
-            {/* زر الواتساب */}
             <Link
               href="https://wa.me/966501206816"
               target="_blank"
@@ -108,7 +99,6 @@ export default function Header() {
               <span dir="ltr">+966 50 120 6816</span>
             </Link>
 
-            {/* زر القائمة (الهمبرجر) - يظهر للموبايل فقط مخفي في شاشات lg */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               title={isMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
@@ -120,7 +110,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* قائمة الموبايل المنسدلة (تظهر للموبايل فقط) */}
       <div 
         className={`lg:hidden absolute top-full left-0 w-full bg-[#061124] border-b-4 border-[#D4AF37] shadow-[0_20px_40px_rgba(0,0,0,0.7)] transition-all duration-500 ease-in-out overflow-hidden z-40 ${
           isMenuOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
@@ -129,7 +118,6 @@ export default function Header() {
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col gap-10">
             
-            {/* القائمة الرئيسية للموبايل */}
             <div>
               <h3 className="text-[#00BFFF] font-bold text-lg mb-6 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
@@ -151,7 +139,6 @@ export default function Header() {
               </nav>
             </div>
 
-            {/* الخدمات للموبايل */}
             <div>
               <h3 className="text-[#00BFFF] font-bold text-lg mb-6 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>

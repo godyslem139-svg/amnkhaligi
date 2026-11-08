@@ -4,10 +4,8 @@ import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 
 export default function FAQ() {
-  // تحديد السؤال المفتوح حالياً (القيمة الافتراضية 0 يعني أول سؤال مفتوح)
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  // الأسئلة الشائعة الخاصة بخدمات الشركة
   const faqs = [
     {
       question: "هل تقومون بتكسير الجدران أو الأرضيات لكشف التسربات؟",
@@ -32,7 +30,6 @@ export default function FAQ() {
   ];
 
   const toggleFAQ = (index: number) => {
-    // إذا ضغط على نفس السؤال المفتوح يغلقه، وإلا يفتح السؤال الجديد
     setOpenIndex(openIndex === index ? null : index);
   };
 
@@ -40,7 +37,6 @@ export default function FAQ() {
     <section className="relative w-full py-24 overflow-hidden" dir="rtl">
       <div className="container mx-auto px-4 relative z-10">
         
-        {/* عنوان السكشن */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-md">
             الأسئلة <span className="text-[#00BFFF]">الشائعة</span>
@@ -51,7 +47,6 @@ export default function FAQ() {
           <div className="w-24 h-1 bg-[#D4AF37] mx-auto rounded-full"></div>
         </div>
 
-        {/* حاوية الأكورديون */}
         <div className="max-w-4xl mx-auto flex flex-col gap-4">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
@@ -65,7 +60,6 @@ export default function FAQ() {
                     : "border-[#00BFFF]/20 bg-[#061124]/50 hover:border-[#00BFFF]/50"
                 }`}
               >
-                {/* رأس السؤال (الزر) */}
                 <button
                   onClick={() => toggleFAQ(index)}
                   className="w-full flex items-center justify-between p-5 md:p-6 text-right focus:outline-none group"
@@ -76,7 +70,6 @@ export default function FAQ() {
                     {faq.question}
                   </h3>
                   
-                  {/* أيقونة الفتح والإغلاق */}
                   <div className={`w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full transition-colors duration-300 ${
                     isOpen ? "bg-[#D4AF37]/10 text-[#D4AF37]" : "bg-[#00BFFF]/10 text-[#00BFFF]"
                   }`}>
@@ -84,7 +77,6 @@ export default function FAQ() {
                   </div>
                 </button>
 
-                {/* الإجابة (محتوى الأكورديون مع حركة انسيابية) */}
                 <div
                   className={`grid transition-all duration-500 ease-in-out ${
                     isOpen ? "grid-rows-[1fr] opacity-100 pb-5 md:pb-6 px-5 md:px-6" : "grid-rows-[0fr] opacity-0 px-5 md:px-6"

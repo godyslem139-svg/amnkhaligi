@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function Services() {
-  // مصفوفة الخدمات مطابقة لأسماء الصور
   const servicesList = [
     { title: "كشف تسربات المياه", img: "/water leak detection.webp" },
     { title: "ترميم وبناء", img: "/restoration construction.webp" },
@@ -16,12 +15,10 @@ export default function Services() {
     { title: "غسيل خزانات", img: "/water tank cleaning.webp" },
   ];
 
-  // تكرار المصفوفة لضمان استمرارية الحركة (Infinite Loop)
   const duplicatedServices = [...servicesList, ...servicesList];
 
   return (
     <section className="relative w-full py-16 overflow-hidden" dir="rtl">
-      {/* ستايل الحركة (شريط الأخبار) */}
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes ticker {
           0% { transform: translateX(0); }
@@ -44,7 +41,6 @@ export default function Services() {
         <div className="w-24 h-1 bg-[#D4AF37] mx-auto rounded-full"></div>
       </div>
 
-      {/* حاوية شريط الأخبار */}
       <div className="ticker-container relative w-full overflow-hidden">
         <div className="animate-ticker gap-6 px-3">
           {duplicatedServices.map((service, index) => (
@@ -52,7 +48,6 @@ export default function Services() {
               key={index}
               className="relative block w-[280px] md:w-[350px] h-[400px] md:h-[500px] rounded-2xl overflow-hidden group border border-[#00BFFF]/30 hover:border-[#D4AF37] transition-all duration-500 shadow-lg flex-shrink-0"
             >
-              {/* صورة الخدمة بملء الارتفاع */}
               <Image
                 src={service.img}
                 alt={service.title}
@@ -62,17 +57,14 @@ export default function Services() {
                 sizes="(max-width: 768px) 280px, 350px"
               />
               
-              {/* التعتيم المتدرج فوق الصورة لتوضيح النص */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#030b1c] via-[#030b1c]/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
 
-              {/* عنوان الخدمة وزر الواتساب */}
               <div className="absolute bottom-0 left-0 w-full p-6 flex flex-col gap-4">
                 <h3 className="text-white text-xl md:text-2xl font-bold flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   {service.title}
                 </h3>
                 
-                {/* زر اطلب الخدمة (ظاهر دائماً بتوهج ذهبي) */}
                 <Link
                   href="https://wa.me/966501206816"
                   target="_blank"

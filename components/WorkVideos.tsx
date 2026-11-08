@@ -6,11 +6,9 @@ import { Play, X } from "lucide-react";
 export default function WorkVideos() {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
-  // توليد مسارات الفيديوهات من a.mp4 إلى z.mp4
   const videoFiles = "abcdefghijklmnopqrstuvwxyz".split("").map((char) => `/${char}.mp4`);
   const duplicatedVideos = [...videoFiles, ...videoFiles];
 
-  // منع التمرير في الصفحة عند فتح الفيديو
   useEffect(() => {
     if (selectedVideo) {
       document.body.style.overflow = "hidden";
@@ -72,14 +70,12 @@ export default function WorkVideos() {
         </div>
       </div>
 
-      {/* النافذة المنبثقة (Modal) */}
       {selectedVideo && (
         <div 
           className="fixed inset-0 z-[100] flex items-center justify-center bg-[#020612]/95 backdrop-blur-lg px-4 transition-opacity duration-300"
           onClick={() => setSelectedVideo(null)} // الإغلاق عند الضغط على الخلفية
         >
           
-          {/* زر الإغلاق (X) محسّن وواضح */}
           <button
             onClick={() => setSelectedVideo(null)}
             title="إغلاق الفيديو"
@@ -88,7 +84,6 @@ export default function WorkVideos() {
             <X className="w-8 h-8" />
           </button>
 
-          {/* حاوية الفيديو */}
           <div 
             className="relative w-full max-w-4xl max-h-[85vh] bg-black rounded-2xl overflow-hidden border-2 border-[#D4AF37] shadow-[0_0_50px_rgba(212,175,55,0.3)] animate-in fade-in zoom-in duration-300 z-[110]"
             onClick={(e) => e.stopPropagation()} // منع الإغلاق عند الضغط داخل الفيديو

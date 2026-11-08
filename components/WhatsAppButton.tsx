@@ -13,19 +13,14 @@ export default function WhatsAppButton() {
         title="تواصل معنا عبر واتساب"
         className="group relative flex items-center justify-center"
       >
-        {/* رسالة ترحيبية تظهر بجانب الزر */}
         <div className="absolute right-full mr-4 whitespace-nowrap bg-[#061124] text-[#D4AF37] border border-[#D4AF37] px-4 py-2 rounded-xl font-bold text-sm shadow-[0_0_15px_rgba(212,175,55,0.3)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none hidden md:block">
           تواصل معنا الآن
-          {/* مثلث المؤشر */}
           <div className="absolute top-1/2 -right-1.5 -translate-y-1/2 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[6px] border-l-[#D4AF37]"></div>
         </div>
 
-        {/* تأثير النبض الأخضر */}
         <div className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-75"></div>
         
-        {/* الزر الأساسي */}
         <div className="relative flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-[#25D366] rounded-full shadow-[0_0_20px_rgba(37,211,102,0.6)] border-2 border-[#030b1c] group-hover:scale-110 transition-transform duration-300">
-          {/* أيقونة واتساب */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
