@@ -9,35 +9,34 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const mainLinks = [
-    { name: "الرئيسية", slug: "/", title: "الصفحة الرئيسية" },
-    { name: "أعمالنا", slug: "/portfolio", title: "أعمالنا السابقة" },
-    { name: "المقالات", slug: "/blog", title: "المقالات والمدونة" },
-    { name: "من نحن", slug: "/about", title: "من نحن" },
-    { name: "تواصل معنا", slug: "/contact", title: "تواصل معنا" },
+    { name: "الرئيسية", slug: "/", title: "الصفحة الرئيسية لشركة أساس الأمن الخليجي" },
+    { name: "أعمالنا", slug: "/portfolio", title: "سابقة أعمالنا في العزل وكشف التسربات بالخرج" },
+    { name: "المقالات", slug: "/blog", title: "مقالات ومدونة شركة أساس الأمن الخليجي" },
+    { name: "من نحن", slug: "/about", title: "من نحن - تعرف على شركة أساس الأمن الخليجي" },
+    { name: "تواصل معنا", slug: "/contact", title: "تواصل مع شركة أساس الأمن الخليجي بالخرج" },
   ];
 
   const servicesLinks = [
-    { name: "كشف تسربات المياه", slug: "/services/water-leak-detection", title: "خدمة كشف تسربات المياه" },
-    { name: "ترميم وبناء", slug: "/services/restoration-and-construction", title: "خدمة ترميم وبناء" },
-    { name: "تسليك مجاري", slug: "/services/sewage-clearing", title: "خدمة تسليك مجاري" },
-    { name: "عزل أسطح", slug: "/services/roof-insulation", title: "خدمة عزل أسطح" },
-    { name: "رش مبيدات", slug: "/services/pest-control", title: "خدمة رش مبيدات" },
-    { name: "غسيل مكيفات", slug: "/services/ac-washing", title: "خدمة غسيل مكيفات" },
-    { name: "غسيل خزانات", slug: "/services/tank-cleaning", title: "خدمة غسيل خزانات" },
+    { name: "كشف تسربات المياه", slug: "/services/water-leak-detection", title: "خدمة كشف تسربات المياه بالخرج بدون تكسير" },
+    { name: "ترميم وبناء", slug: "/services/restoration-and-construction", title: "خدمة ترميم وبناء وصيانة المباني بالخرج" },
+    { name: "تسليك مجاري", slug: "/services/sewage-clearing", title: "خدمة تسليك مجاري بالضغط في الخرج" },
+    { name: "عزل أسطح", slug: "/services/roof-insulation", title: "خدمة عزل أسطح مائي وحراري وفوم بالخرج" },
+    { name: "رش مبيدات", slug: "/services/pest-control", title: "خدمة رش مبيدات ومكافحة حشرات بالخرج" },
+    { name: "غسيل مكيفات", slug: "/services/ac-washing", title: "خدمة غسيل وصيانة مكيفات بالخرج" },
+    { name: "غسيل خزانات", slug: "/services/tank-cleaning", title: "خدمة غسيل وتعقيم وعزل خزانات بالخرج" },
   ];
 
   return (
     <header className="bg-[#030b1c] border-b-2 border-[#00BFFF] sticky top-0 z-50 w-full" dir="rtl">
-      
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-24 relative z-50 bg-[#030b1c]">
           
-          <div className="flex items-center gap-80">
+          <div className="flex items-center gap-10">
             <Link href="/" title="الصفحة الرئيسية لشركة أساس الأمن الخليجي" className="flex-shrink-0">
               <Image
                 src="/logo.png"
                 alt="شعار شركة أساس الأمن الخليجي"
-                title="شعار أساس الأمن الخليجي"
+                title="شعار شركة أساس الأمن الخليجي"
                 width={160}
                 height={60}
                 className="object-contain"
@@ -46,10 +45,10 @@ export default function Header() {
             </Link>
 
             <nav className="hidden lg:flex items-center gap-8">
-              <Link href="/" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">الرئيسية</Link>
+              <Link href="/" title="الصفحة الرئيسية لشركة أساس الأمن الخليجي" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">الرئيسية</Link>
               
               <div className="relative group h-24 flex items-center">
-                <button className="text-white group-hover:text-[#D4AF37] font-bold text-lg transition-colors flex items-center gap-1">
+                <button title="قائمة خدماتنا الاحترافية" className="text-white group-hover:text-[#D4AF37] font-bold text-lg transition-colors flex items-center gap-1">
                   خدماتنا
                   <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                 </button>
@@ -69,19 +68,19 @@ export default function Header() {
                 </div>
               </div>
 
-              <Link href="/portfolio" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">أعمالنا</Link>
-              <Link href="/blog" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">المقالات</Link>
-              <Link href="/about" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">من نحن</Link>
-              <Link href="/contact" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">تواصل معنا</Link>
+              <Link href="/portfolio" title="سابقة أعمالنا في العزل وكشف التسربات بالخرج" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">أعمالنا</Link>
+              <Link href="/blog" title="مقالات ومدونة شركة أساس الأمن الخليجي" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">المقالات</Link>
+              <Link href="/about" title="من نحن - تعرف على شركة أساس الأمن الخليجي" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">من نحن</Link>
+              <Link href="/contact" title="تواصل مع شركة أساس الأمن الخليجي بالخرج" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">تواصل معنا</Link>
             </nav>
           </div>
 
           <div className="flex items-center gap-3 md:gap-5">
-            
             <Link
               href="https://www.tiktok.com/@amnkhaliji"
               target="_blank"
-              title="حسابنا على تيك توك"
+              rel="noopener noreferrer"
+              title="تابع حساب شركة أساس الأمن الخليجي على تيك توك"
               className="flex items-center justify-center w-10 h-10 rounded-full border border-[#00BFFF] text-[#00BFFF] hover:bg-[#00BFFF] hover:text-[#030b1c] transition-all duration-300"
             >
               <svg fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
@@ -92,7 +91,8 @@ export default function Header() {
             <Link
               href="https://wa.me/966501206816"
               target="_blank"
-              title="تواصل معنا عبر واتساب"
+              rel="noopener noreferrer"
+              title="تواصل معنا عبر واتساب على الرقم 0501206816"
               className="hidden sm:flex items-center gap-2 bg-[#00BFFF] text-[#030b1c] hover:bg-[#D4AF37] px-5 py-2.5 rounded-full font-bold transition-colors duration-300"
             >
               <Phone className="w-5 h-5" />
@@ -117,7 +117,6 @@ export default function Header() {
       >
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col gap-10">
-            
             <div>
               <h3 className="text-[#00BFFF] font-bold text-lg mb-6 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
@@ -161,7 +160,6 @@ export default function Header() {
                 ))}
               </div>
             </div>
-
           </div>
         </div>
       </div>
