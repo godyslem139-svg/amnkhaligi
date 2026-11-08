@@ -18,9 +18,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "0501206816 شركة عزل و كشف تسربات في الخرج | ضمان معتمد 10سنين",
   description: "شركة عزل و كشف تسربات في الخرج . عزل خزانات و كشف تسربات المياه و ترميم و غسيل سجاد و مفروشات و وتسليك مجارى و رش مبيدات حشرية متخصصة و معتمدة | 0501206816",
-  // أضفنا كود التحقق الخاص بجوجل هنا مباشرة
   verification: {
-    google: "N8G70FJVov5wafugVvSDCi0v8tizSYWmEiEtqOdXbJE",
+    google: [
+      "N8G70FJVov5wafugVvSDCi0v8tizSYWmEiEtqOdXbJE",
+      "UBcsOSzRmw07Rpou5Gjj71VbTWuSmJPFrN5Lx9dFVDo",
+    ],
   },
 };
 
@@ -37,7 +39,6 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-[#030b1c]">
 
-        {/* فيديو الخلفية الثابت للموقع بالكامل */}
         <video
           autoPlay
           loop
@@ -48,21 +49,16 @@ export default function RootLayout({
           <source src="/hero.mp4" type="video/mp4" />
         </video>
 
-        {/* طبقة تعتيم ثابته فوق الفيديو ليكون النص مقروءاً دائماً */}
         <div className="fixed top-0 left-0 w-full h-screen bg-gradient-to-b from-[#030b1c]/80 via-[#030b1c]/70 to-[#030b1c]/90 -z-10"></div>
 
-        {/* الهيدر يظهر في الأعلى */}
         <Header />
 
-        {/* المحتوى المتغير لكل صفحة */}
         <main className="flex-grow relative z-10">
           {children}
         </main>
 
-        {/* الفوتر يظهر في الأسفل */}
         <Footer />
 
-        {/* زر الواتساب العائم يظهر فوق كل شيء */}
         <WhatsAppButton />
 
       </body>
