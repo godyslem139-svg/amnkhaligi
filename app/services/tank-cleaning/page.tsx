@@ -131,9 +131,6 @@ interface TankFAQ {
   answer: string;
 }
 
-// ============================================================================
-// 2. Comprehensive Encyclopedic Constants (البيانات الموسوعية الكاملة)
-// ============================================================================
 
 const TANK_PROBLEMS_DATABASE: TankProblemProfile[] = [
   {
@@ -487,10 +484,6 @@ const TANK_FAQS: TankFAQ[] = [
   },
 ];
 
-// ============================================================================
-// 3. Main Page Component (المكون الرئيسي لصفحة غسيل وعزل خزانات بالخرج)
-// ============================================================================
-
 export default function TankCleaningPage() {
   // Interactive States
   const [selectedProblemId, setSelectedProblemId] = useState<string>(
@@ -509,7 +502,6 @@ export default function TankCleaningPage() {
   const [tankDepth, setTankDepth] = useState<number>(2.5);
   const [calcNeighborhood, setCalcNeighborhood] = useState<string>("حي الخزامى");
 
-  // Current Selected Data Objects
   const currentProblem =
     TANK_PROBLEMS_DATABASE.find((p) => p.id === selectedProblemId) ||
     TANK_PROBLEMS_DATABASE[0];
