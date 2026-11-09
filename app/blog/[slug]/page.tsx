@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -15,6 +15,9 @@ import {
   CheckCircle2,
   ShieldCheck,
 } from "lucide-react";
+
+// إجبار الصفحة على العمل بشكل ديناميكي لتجنب مشاكل البناء الثابت (Prerender)
+export const dynamic = "force-dynamic";
 
 async function getPostBySlug(slug: string) {
   const query = `*[_type == "post" && slug.current == $slug][0] {
@@ -37,7 +40,7 @@ async function getPostBySlug(slug: string) {
       }
     }
   }`;
-  return await client.fetch(query, { slug }, { next: { revalidate: 60 } });
+  return await client.fetch(query, { slug }, { cache: "no-store" });
 }
 
 // مكونات تنسيق المحتوى الغني (Portable Text)
@@ -271,7 +274,9 @@ export default async function SingleBlogPostPage({
                 dangerouslySetInnerHTML={{ __html: post.htmlContent }}
               />
             ) : (
-              <PortableText value={post.body} components={portableTextComponents} />
+              <Suspense fallback={<div className="text-center py-6 text-gray-400">جاري تحميل المحتوى...</div>}>
+                <PortableText value={post.body} components={portableTextComponents} />
+              </Suspense>
             )}
           </div>
 
