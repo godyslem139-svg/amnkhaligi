@@ -16,9 +16,6 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
-// إجبار الصفحة على العمل بشكل ديناميكي لتجنب مشاكل البناء الثابت (Prerender)
-export const dynamic = "force-dynamic";
-
 async function getPostBySlug(slug: string) {
   const query = `*[_type == "post" && slug.current == $slug][0] {
     title,
@@ -40,7 +37,7 @@ async function getPostBySlug(slug: string) {
       }
     }
   }`;
-  return await client.fetch(query, { slug }, { cache: "no-store" });
+  return await client.fetch(query, { slug }, { next: { revalidate: 60 } });
 }
 
 // مكونات تنسيق المحتوى الغني (Portable Text)
