@@ -16,6 +16,18 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
+// إعدادات تمنع خطأ الـ Prerender أثناء البناء
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  try {
+    const posts = await client.fetch(`*[_type == "post"]{ "slug": slug.current }`);
+    return posts.map((post: any) => ({ slug: post.slug || "default" }));
+  } catch (error) {
+    return [];
+  }
+}
+
 async function getPostBySlug(slug: string) {
   const query = `*[_type == "post" && slug.current == $slug][0] {
     title,
@@ -102,7 +114,7 @@ const portableTextComponents: any = {
         <div className="relative w-full h-[300px] sm:h-[440px] rounded-2xl overflow-hidden">
           <Image
             src={urlFor(value).width(1000).url()}
-            alt={value.alt || "صورة توضيحية من شركة أساس الأمن الخليجي"}
+            alt={value.alt || "صورة توضيحية"}
             title={value.alt || "صورة المقال"}
             fill
             className="object-cover"
@@ -139,9 +151,6 @@ const portableTextComponents: any = {
             اضغط هنا لمشاهدة الفيديو: {value.videoTitle}
           </a>
         ) : null}
-        {value.caption && (
-          <p className="text-xs sm:text-sm text-gray-400 mt-3 text-center">{value.caption}</p>
-        )}
       </div>
     ),
     ctaBlock: ({ value }: any) => (
@@ -161,8 +170,8 @@ const portableTextComponents: any = {
             href={value.customLink || "https://wa.me/966501206816"}
             target="_blank"
             rel="noopener noreferrer"
-            title={value.buttonText || "تواصل عبر واتساب"}
-            className="w-full sm:w-auto flex items-center justify-center gap-2.5 bg-[#D4AF37] hover:bg-[#e5c148] text-[#030b1c] font-black px-7 py-4 rounded-xl shadow-[0_0_20px_rgba(212,175,55,0.5)] transition-all"
+            title="تواصل عبر واتساب"
+            className="w-full sm:w-auto flex items-center justify-center gap-2.5 bg-[#D4AF37] text-[#030b1c] font-black px-7 py-4 rounded-xl shadow transition-all"
           >
             <MessageSquare className="w-5 h-5" />
             <span>{value.buttonText || "تواصل معنا عبر واتساب"}</span>
@@ -170,7 +179,7 @@ const portableTextComponents: any = {
           <a
             href="tel:+966501206816"
             title="اتصال هاتفي مباشر"
-            className="w-full sm:w-auto flex items-center justify-center gap-2.5 bg-[#061124] hover:bg-[#00BFFF] text-white hover:text-[#030b1c] border-2 border-[#00BFFF] font-extrabold px-7 py-4 rounded-xl transition-all"
+            className="w-full sm:w-auto flex items-center justify-center gap-2.5 bg-[#061124] text-white border-2 border-[#00BFFF] font-extrabold px-7 py-4 rounded-xl transition-all"
           >
             <Phone className="w-5 h-5" />
             <span dir="ltr">+966 50 120 6816</span>
@@ -200,7 +209,6 @@ const portableTextComponents: any = {
   },
 };
 
-// مكون داخلي لجلب وعرض المقال مغلف بالكامل بـ Suspense
 async function PostContent({ slug }: { slug: string }) {
   const decodedSlug = decodeURIComponent(slug);
   const post = await getPostBySlug(decodedSlug);
@@ -281,7 +289,8 @@ export default async function SingleBlogPostPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
 
   return (
     <div className="relative min-h-screen bg-transparent text-white py-12 lg:py-20" dir="rtl">
@@ -297,7 +306,6 @@ export default async function SingleBlogPostPage({
           </Link>
         </div>
 
-        {/* تغطية المكون بـ Suspense لرضا Next.js أثناء البناء */}
         <Suspense fallback={<div className="text-center py-20 text-[#D4AF37] font-bold text-xl">جاري تحميل المقال الهندسي...</div>}>
           <PostContent slug={slug} />
         </Suspense>
