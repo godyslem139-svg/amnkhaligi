@@ -991,11 +991,10 @@ export default function ACWashingPage() {
               اختر <span className="text-[#D4AF37]">المشكلة التي تلاحظها في مكيفك</span> واعرف الحل الهندسي
             </h2>
             <p className="text-gray-300 text-lg">
-              نحدد السبب الفني الدقيق لكل مشكلة ونعالجها من جذورها في موقعك بالخرج دون الحاجة لفك أو نقل المكيف:
+              نحدد السبب الفني الدقيق لكل مشكلة ونعالجها بشكل فوري من جذورها في موقعك بالخرج دون الحاجة لفك أو نقل المكيف:
             </p>
           </div>
 
-          {/* 4 Fault Selector Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
             {AC_FAULT_DIAGNOSTICS.map((flt) => {
               const isSelected = selectedFaultId === flt.id;
@@ -1026,7 +1025,6 @@ export default function ACWashingPage() {
             })}
           </div>
 
-          {/* Active Fault Detailed Card */}
           <div className="bg-[#061124]/95 border-2 border-[#D4AF37] rounded-3xl p-6 sm:p-10 shadow-[0_0_40px_rgba(212,175,55,0.2)]">
             <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-8 border-b border-gray-800">
               <div>
@@ -1063,7 +1061,6 @@ export default function ACWashingPage() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-              {/* Root Causes & Risks */}
               <div className="lg:col-span-5 space-y-6">
                 <div className="bg-[#030b1c] p-5 rounded-2xl border border-[#00BFFF]/30">
                   <span className="text-xs text-gray-400 block mb-1">الأثر المباشر على الأداء:</span>
