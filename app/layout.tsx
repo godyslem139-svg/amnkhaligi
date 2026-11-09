@@ -1,9 +1,7 @@
-"use client"; // نحتاج لاستخدام الـ hooks لمعرفة المسار الحالي
-
-import { usePathname } from "next/navigation";
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header"; 
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
@@ -17,15 +15,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const metadata: Metadata = {
+  title: "أساس الأمن الخليجي - للصيانة والتسربات والعزل",
+  description: "الموقع الرسمي لشركة أساس الأمن الخليجي بالخرج",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname();
-  // التحقق مما إذا كنا داخل لوحة تحكم سانتي
-  const isStudio = pathname?.startsWith("/studio");
-
   return (
     <html
       lang="ar"
@@ -33,37 +32,26 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#030b1c]">
-
-        {/* فيديو الخلفية الثابت للموقع بالكامل (يظهر في الموقع العادي فقط) */}
-        {!isStudio && (
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="fixed top-0 left-0 w-full h-screen object-cover -z-20"
-          >
-            <source src="/hero.mp4" type="video/mp4" />
-          </video>
-        )}
+        {/* فيديو الخلفية الثابت للموقع */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="fixed top-0 left-0 w-full h-screen object-cover -z-20"
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
 
         {/* طبقة التعتيم */}
-        {!isStudio && (
-          <div className="fixed top-0 left-0 w-full h-screen bg-gradient-to-b from-[#030b1c]/80 via-[#030b1c]/70 to-[#030b1c]/90 -z-10"></div>
-        )}
+        <div className="fixed top-0 left-0 w-full h-screen bg-gradient-to-b from-[#030b1c]/80 via-[#030b1c]/70 to-[#030b1c]/90 -z-10"></div>
 
-        {/* الهيدر يظهر في الموقع العادي فقط ولا يظهر في /studio */}
-        {!isStudio && <Header />}
+        <Header />
 
-        {/* المحتوى المتغير (لوحة التحكم تملأ الشاشة بالكامل بدونهما) */}
-        <main className="flex-grow relative z-10">
-          {children}
-        </main>
+        <main className="flex-grow relative z-10">{children}</main>
 
-        {/* الفوتر وزر الواتساب يظهران في الموقع العادي فقط */}
-        {!isStudio && <Footer />}
-        {!isStudio && <WhatsAppButton />}
-
+        <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );
