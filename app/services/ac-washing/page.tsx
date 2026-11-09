@@ -55,9 +55,6 @@ import {
   Container,
 } from "lucide-react";
 
-// ============================================================================
-// 1. Interfaces & Engineering Data Types (هياكل البيانات الهندسية لغسيل المكيفات)
-// ============================================================================
 
 interface ACFaultProfile {
   id: string;
@@ -148,10 +145,6 @@ interface ACFAQ {
   question: string;
   answer: string;
 }
-
-// ============================================================================
-// 2. Comprehensive Encyclopedic Constants (البيانات الموسوعية الكاملة)
-// ============================================================================
 
 const AC_FAULT_DIAGNOSTICS: ACFaultProfile[] = [
   {
@@ -403,9 +396,6 @@ const AC_UNIT_TYPES_DB: ACUnitTypeSpec[] = [
   },
 ];
 
-// ============================================================================
-// SISTER SERVICES DATA WITH EXACT FULL URLS requested by user
-// ============================================================================
 const SISTER_SERVICES_HUB: SisterServiceCard[] = [
   {
     id: "water-leak",
@@ -721,10 +711,6 @@ const AC_FAQS: ACFAQ[] = [
   },
 ];
 
-// ============================================================================
-// 3. Main Page Component (المكون الرئيسي لصفحة غسيل مكيفات بالخرج)
-// ============================================================================
-
 export default function ACWashingPage() {
   // Interactive States
   const [selectedFaultId, setSelectedFaultId] = useState<string>("water-dripping-indoor");
@@ -787,10 +773,6 @@ export default function ACWashingPage() {
 
   return (
     <div className="relative min-h-screen bg-transparent text-white overflow-hidden" dir="rtl">
-      
-      {/* =====================================================================
-          SECTION 1: HVAC COOLING & PURIFICATION HERO SECTION (بدون صور)
-      ===================================================================== */}
       <section className="relative pt-10 pb-20 lg:pt-16 lg:pb-28 border-b border-[#00BFFF]/20">
         {/* Background Glows */}
         <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#00BFFF]/10 rounded-full blur-[130px] pointer-events-none"></div>
@@ -876,7 +858,6 @@ export default function ACWashingPage() {
                 </div>
               </div>
 
-              {/* Action Buttons with Explicit Title Attributes */}
               <div className="flex flex-wrap items-center gap-4 pt-4">
                 <Link
                   href="https://wa.me/966501206816"
@@ -900,7 +881,6 @@ export default function ACWashingPage() {
               </div>
             </div>
 
-            {/* Left Column: HVAC Digital Telemetry Console (Zero Images) */}
             <div className="lg:col-span-5">
               <div className="bg-[#061124]/95 border-2 border-[#D4AF37] rounded-3xl p-6 sm:p-8 shadow-[0_0_45px_rgba(212,175,55,0.25)] relative overflow-hidden">
                 <div className="flex items-center justify-between border-b border-gray-800 pb-4 mb-6">
@@ -922,7 +902,6 @@ export default function ACWashingPage() {
                   </span>
                 </div>
 
-                {/* Cooling Output & Airflow Gauges */}
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div className="bg-[#030b1c] p-4 rounded-2xl border border-[#00BFFF]/40 text-center">
                     <span className="text-xs text-gray-400 block mb-1">درجة حرارة عصف المكيف</span>
@@ -945,7 +924,6 @@ export default function ACWashingPage() {
                   </div>
                 </div>
 
-                {/* Technical Checklist Inside Console */}
                 <div className="bg-[#030b1c] p-5 rounded-2xl border border-gray-800 space-y-3 mb-6 text-xs">
                   <div className="flex items-center justify-between">
                     <span className="text-gray-400">الوفر في استهلاك الكهرباء:</span>
@@ -977,9 +955,6 @@ export default function ACWashingPage() {
         </div>
       </section>
 
-      {/* =====================================================================
-          SECTION 2: INTERACTIVE AC FAULT DIAGNOSTIC ENGINE (مشخص أعطال المكيفات)
-      ===================================================================== */}
       <section className="py-20 relative z-10">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
@@ -1103,7 +1078,6 @@ export default function ACWashingPage() {
                 </div>
               </div>
 
-              {/* Solution Protocol */}
               <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
                 <div className="bg-[#030b1c] p-6 sm:p-8 rounded-2xl border-2 border-[#D4AF37]/40">
                   <h4 className="text-xl font-extrabold text-[#D4AF37] mb-5 flex items-center gap-2">
@@ -1152,10 +1126,6 @@ export default function ACWashingPage() {
           </div>
         </div>
       </section>
-
-      {/* =====================================================================
-          SECTION 3: 4 AC UNIT TYPES ENCYCLOPEDIA (سبلت، مركزي، كاسيت، شباك)
-      ===================================================================== */}
       <section className="py-20 relative z-10 border-t border-[#00BFFF]/20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
@@ -1255,10 +1225,6 @@ export default function ACWashingPage() {
         </div>
       </section>
 
-      {/* =====================================================================
-          SECTION 4: MIDDLE SECTION - OTHER SERVICES INTERLINKING HUB (مطلوب بالنص)
-          السكشن المخصص للخدمات الأخرى بروابطها الكاملة في منتصف الصفحة
-      ===================================================================== */}
       <section className="py-24 relative z-10 border-y-2 border-[#D4AF37] bg-gradient-to-b from-[#020814] via-[#06152d] to-[#020814]">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center max-w-4xl mx-auto mb-16">
@@ -1358,9 +1324,6 @@ export default function ACWashingPage() {
         </div>
       </section>
 
-      {/* =====================================================================
-          SECTION 5: CSS INTERACTIVE 5-STAGE AC WASH SIMULATOR (محاكي الغسيل)
-      ===================================================================== */}
       <section className="py-20 relative z-10">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
@@ -1413,7 +1376,6 @@ export default function ACWashingPage() {
                   محاكاة كفاءة كويل التبريد وتدفق الهواء البارد
                 </span>
 
-                {/* Split AC Unit CSS Box */}
                 <div className="w-full max-w-xs h-32 rounded-2xl border-4 border-gray-500 bg-gradient-to-b from-gray-800 to-gray-900 p-4 flex flex-col justify-between relative shadow-lg">
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] font-mono text-[#00BFFF]">ASAS-HVAC PRO</span>
@@ -1422,7 +1384,6 @@ export default function ACWashingPage() {
                     </span>
                   </div>
 
-                  {/* Evaporator Fins Representation */}
                   <div className="w-full h-10 bg-[#061124] rounded border border-gray-700 overflow-hidden relative flex items-center justify-center">
                     <div
                       className="absolute inset-y-0 right-0 bg-amber-900/80 transition-all duration-700"
@@ -1437,11 +1398,9 @@ export default function ACWashingPage() {
                     </span>
                   </div>
 
-                  {/* Louver Vent */}
                   <div className="w-full h-2 bg-[#00BFFF]/50 rounded-full"></div>
                 </div>
 
-                {/* Cold Airflow Waves */}
                 <div className="mt-6 text-center">
                   <span className="text-3xl font-black text-[#00BFFF]">
                     {currentWashStageObj.airflowAndCoolingEfficiency}%
@@ -1452,7 +1411,6 @@ export default function ACWashingPage() {
                 </div>
               </div>
 
-              {/* Stage Details */}
               <div className="lg:col-span-7 space-y-6">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span
@@ -1490,10 +1448,6 @@ export default function ACWashingPage() {
           </div>
         </div>
       </section>
-
-      {/* =====================================================================
-          SECTION 6: FREON GASES LAB & MULTI-UNIT PACKAGE CALCULATOR
-      ===================================================================== */}
       <section className="py-20 relative z-10 border-t border-[#D4AF37]/20">
         <div className="container mx-auto px-4 lg:px-8">
           {/* Freon Lab Cards */}
@@ -1536,7 +1490,6 @@ export default function ACWashingPage() {
             </div>
           </div>
 
-          {/* Interactive Multi-AC Package Calculator */}
           <div className="bg-[#061124]/95 border-2 border-[#00BFFF] rounded-3xl p-6 sm:p-10 lg:p-12 shadow-[0_0_45px_rgba(0,191,255,0.2)]">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <span className="inline-flex items-center gap-2 bg-[#00BFFF]/15 text-[#00BFFF] border border-[#00BFFF]/40 px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold mb-3">
@@ -1590,7 +1543,6 @@ export default function ACWashingPage() {
                   </div>
                 </div>
 
-                {/* Units Count Slider */}
                 <div className="bg-[#030b1c] p-5 rounded-2xl border border-gray-800">
                   <div className="flex items-center justify-between mb-2">
                     <label className="text-sm font-bold text-gray-200">
@@ -1637,7 +1589,6 @@ export default function ACWashingPage() {
                 </div>
               </div>
 
-              {/* Output Box */}
               <div className="lg:col-span-5 bg-[#030b1c] border-2 border-[#D4AF37] rounded-3xl p-6 sm:p-8 space-y-5 shadow-[0_0_30px_rgba(212,175,55,0.2)]">
                 <div className="border-b border-gray-800 pb-4">
                   <span className="text-xs text-[#00BFFF] font-bold block">ملخص الباقة المختارة</span>
@@ -1676,10 +1627,6 @@ export default function ACWashingPage() {
           </div>
         </div>
       </section>
-
-      {/* =====================================================================
-          SECTION 7: COMPARISON TABLE & AL-KHARJ SECTORS COVERAGE
-      ===================================================================== */}
       <section className="py-20 relative z-10 border-t border-[#00BFFF]/20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
@@ -1770,10 +1717,6 @@ export default function ACWashingPage() {
           </div>
         </div>
       </section>
-
-      {/* =====================================================================
-          SECTION 8: COMPREHENSIVE FAQS (الأسئلة الشائعة حول غسيل المكيفات)
-      ===================================================================== */}
       <section className="py-20 relative z-10 border-t border-[#D4AF37]/20">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
           <div className="text-center mb-14">
@@ -1837,10 +1780,6 @@ export default function ACWashingPage() {
           </div>
         </div>
       </section>
-
-      {/* =====================================================================
-          SECTION 9: FINAL CTA & SEO-COMPLETE INTERNAL LINKS
-      ===================================================================== */}
       <section className="py-20 relative z-10 border-t border-[#00BFFF]/20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="bg-gradient-to-r from-[#061124] via-[#0a1d3b] to-[#061124] border-2 border-[#D4AF37] rounded-3xl p-8 sm:p-14 text-center shadow-[0_0_50px_rgba(212,175,55,0.3)]">
@@ -1881,7 +1820,6 @@ export default function ACWashingPage() {
                 </a>
               </div>
 
-              {/* Footer Quick Links with Explicit Title Attributes */}
               <div className="mt-12 pt-8 border-t border-gray-800 flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm">
                 <span className="text-gray-400 font-bold">روابط سريعة لخدماتنا:</span>
                 <Link
