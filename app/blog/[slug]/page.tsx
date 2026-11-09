@@ -37,10 +37,10 @@ async function getPostBySlug(slug: string) {
       }
     }
   }`;
-  return await client.fetch(query, { slug }, { next: { revalidate: 60 } });
+  return await client.fetch(query, { slug }, { cache: "no-store" });
 }
 
-// مكونات تنسيق المحتوى الغني (Portable Text)
+// مكونات تنسيق المحتوى الغني
 const portableTextComponents: any = {
   block: {
     h2: ({ children }: any) => (
@@ -200,12 +200,8 @@ const portableTextComponents: any = {
   },
 };
 
-export default async function SingleBlogPostPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
+// مكون داخلي لجلب وعرض المقال مغلف بالكامل بـ Suspense
+async function PostContent({ slug }: { slug: string }) {
   const decodedSlug = decodeURIComponent(slug);
   const post = await getPostBySlug(decodedSlug);
 
@@ -214,10 +210,82 @@ export default async function SingleBlogPostPage({
   }
 
   return (
+    <article className="bg-[#061124]/95 border-2 border-[#D4AF37]/60 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-[0_0_45px_rgba(0,0,0,0.6)]">
+      <div className="flex flex-wrap items-center gap-3 mb-4">
+        <span className="bg-[#D4AF37] text-[#030b1c] text-xs font-black px-3.5 py-1 rounded-lg">
+          {post.category || "مقال هندسي"}
+        </span>
+        <span className="text-xs text-gray-400 flex items-center gap-1">
+          <Calendar className="w-3.5 h-3.5 text-[#00BFFF]" />
+          {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString("ar-SA") : ""}
+        </span>
+        <span className="text-xs text-gray-400 flex items-center gap-1">
+          <Clock className="w-3.5 h-3.5 text-[#D4AF37]" />
+          {post.readingTime || 5} دقائق قراءة
+        </span>
+      </div>
+
+      <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-6">
+        {post.title}
+      </h1>
+
+      {post.mainImage && (
+        <div className="relative w-full h-[280px] sm:h-[440px] rounded-2xl overflow-hidden border-2 border-[#00BFFF]/40 mb-10 bg-[#030b1c] flex items-center justify-center p-2">
+          <Image
+            src={urlFor(post.mainImage).width(1200).height(675).url()}
+            alt={post.mainImage.alt || post.title}
+            title={post.mainImage.title || post.title}
+            fill
+            priority
+            className="object-contain"
+          />
+        </div>
+      )}
+
+      <div className="prose prose-invert max-w-none">
+        {post.htmlContent ? (
+          <div
+            className="text-gray-200 text-base sm:text-lg leading-relaxed space-y-4"
+            dangerouslySetInnerHTML={{ __html: post.htmlContent }}
+          />
+        ) : (
+          <PortableText value={post.body} components={portableTextComponents} />
+        )}
+      </div>
+
+      {post.relatedServiceUrl && (
+        <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#030b1c] p-6 rounded-2xl border border-[#00BFFF]/30">
+          <div>
+            <span className="text-xs text-[#D4AF37] font-bold block mb-1">
+              هل تبحث عن تفاصيل هذه الخدمة في الخرج؟
+            </span>
+            <h3 className="text-lg font-extrabold text-white">
+              تصفح الصفحة الهندسية الكاملة للخدمة واطلب المعاينة
+            </h3>
+          </div>
+          <Link
+            href={post.relatedServiceUrl}
+            title="استعراض صفحة الخدمة"
+            className="bg-[#00BFFF] hover:bg-[#D4AF37] text-[#030b1c] font-black px-6 py-3.5 rounded-xl text-sm flex-shrink-0 transition-all"
+          >
+            استعراض صفحة الخدمة ←
+          </Link>
+        </div>
+      )}
+    </article>
+  );
+}
+
+export default async function SingleBlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+
+  return (
     <div className="relative min-h-screen bg-transparent text-white py-12 lg:py-20" dir="rtl">
       <div className="container mx-auto px-4 lg:px-8 max-w-4xl relative z-10">
-        
-        {/* شريط الرجوع */}
         <div className="mb-8">
           <Link
             href="/blog"
@@ -229,75 +297,10 @@ export default async function SingleBlogPostPage({
           </Link>
         </div>
 
-        {/* مقال رئيسي */}
-        <article className="bg-[#061124]/95 border-2 border-[#D4AF37]/60 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-[0_0_45px_rgba(0,0,0,0.6)]">
-          <div className="flex flex-wrap items-center gap-3 mb-4">
-            <span className="bg-[#D4AF37] text-[#030b1c] text-xs font-black px-3.5 py-1 rounded-lg">
-              {post.category || "مقال هندسي"}
-            </span>
-            <span className="text-xs text-gray-400 flex items-center gap-1">
-              <Calendar className="w-3.5 h-3.5 text-[#00BFFF]" />
-              {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString("ar-SA") : ""}
-            </span>
-            <span className="text-xs text-gray-400 flex items-center gap-1">
-              <Clock className="w-3.5 h-3.5 text-[#D4AF37]" />
-              {post.readingTime || 5} دقائق قراءة
-            </span>
-          </div>
-
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-6">
-            {post.title}
-          </h1>
-
-          {/* الصورة البارزة */}
-          {post.mainImage && (
-            <div className="relative w-full h-[280px] sm:h-[440px] rounded-2xl overflow-hidden border-2 border-[#00BFFF]/40 mb-10 bg-[#030b1c] flex items-center justify-center p-2">
-              <Image
-                src={urlFor(post.mainImage).width(1200).height(675).url()}
-                alt={post.mainImage.alt || post.title}
-                title={post.mainImage.title || post.title}
-                fill
-                priority
-                className="object-contain"
-              />
-            </div>
-          )}
-
-          {/* محتوى المقال (إما HTML مباشر أو محرر غني) */}
-          <div className="prose prose-invert max-w-none">
-            {post.htmlContent ? (
-              <div
-                className="text-gray-200 text-base sm:text-lg leading-relaxed space-y-4"
-                dangerouslySetInnerHTML={{ __html: post.htmlContent }}
-              />
-            ) : (
-              <Suspense fallback={<div className="text-center py-6 text-gray-400">جاري تحميل المحتوى...</div>}>
-                <PortableText value={post.body} components={portableTextComponents} />
-              </Suspense>
-            )}
-          </div>
-
-          {/* رابط الخدمة المرتبطة */}
-          {post.relatedServiceUrl && (
-            <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#030b1c] p-6 rounded-2xl border border-[#00BFFF]/30">
-              <div>
-                <span className="text-xs text-[#D4AF37] font-bold block mb-1">
-                  هل تبحث عن تفاصيل هذه الخدمة في الخرج؟
-                </span>
-                <h3 className="text-lg font-extrabold text-white">
-                  تصفح الصفحة الهندسية الكاملة للخدمة واطلب المعاينة
-                </h3>
-              </div>
-              <Link
-                href={post.relatedServiceUrl}
-                title="استعراض صفحة الخدمة"
-                className="bg-[#00BFFF] hover:bg-[#D4AF37] text-[#030b1c] font-black px-6 py-3.5 rounded-xl text-sm flex-shrink-0 transition-all"
-              >
-                استعراض صفحة الخدمة ←
-              </Link>
-            </div>
-          )}
-        </article>
+        {/* تغطية المكون بـ Suspense لرضا Next.js أثناء البناء */}
+        <Suspense fallback={<div className="text-center py-20 text-[#D4AF37] font-bold text-xl">جاري تحميل المقال الهندسي...</div>}>
+          <PostContent slug={slug} />
+        </Suspense>
       </div>
     </div>
   );
