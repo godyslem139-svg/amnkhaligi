@@ -56,6 +56,29 @@ export const postType = defineType({
         },
       ],
     }),
+
+    // مكتبة روابط صور الـ HTML القياسية والمستقرة
+    defineField({
+      name: "htmlImagesLibrary",
+      title: "مكتبة روابط صور الـ HTML",
+      type: "array",
+      group: "content",
+      description: "ارفع الصور هنا، وبعد نشر المقال اضغط بزر الفأرة الأيمن على الصورة واختار نسخ عنوان الصورة (Copy image address) لاستخدامها في كود الـ HTML.",
+      of: [
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            {
+              name: "alt",
+              type: "string",
+              title: "وصف الصورة (Alt)",
+            },
+          ],
+        },
+      ],
+    }),
+
     defineField({
       name: "category",
       title: "قسم المقال",
@@ -114,7 +137,7 @@ export const postType = defineType({
       type: "text",
       rows: 15,
       group: "content",
-      description: "إذا كنت تريد كتابة المقال بلغة HTML مباشرة، اكتب الكود هنا.",
+      description: "إذا كنت تريد كتابة المقال بلغة HTML مباشرة، اكتب الكود هنا واستخدم روابط الصور المنسوخة من المكتبة بالأعلى.",
     }),
 
     // محرر المقال الغني التقليدي
