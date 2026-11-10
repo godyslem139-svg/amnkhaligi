@@ -5,16 +5,24 @@ import { Play, X } from "lucide-react";
 
 export default function WorkVideos() {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [loadAll, setLoadAll] = useState(false);
 
-  // إضافة #t=0.001 لجلب أول فريم كصورة معاينة تلقائياً
   const videoFiles = "abcdefghijklmnopqrstuvwx".split("").map((char) => `/${char}.mp4#t=0.001`);
   const duplicatedVideos = [...videoFiles, ...videoFiles];
 
+  // تأخير تحميل الفيديوهات البعيدة عن الشاشة لمدة ثانية ونصف لتفادي حظر اتصالات السيرفر
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoadAll(true);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     if (selectedVideo) {
-      document.body.style.overflow = "hidden";
+      document.documentElement.classList.add("overflow-hidden");
     } else {
-      document.body.style.overflow = "unset";
+      document.documentElement.classList.remove("overflow-hidden");
     }
   }, [selectedVideo]);
 
@@ -24,13 +32,14 @@ export default function WorkVideos() {
         dangerouslySetInnerHTML={{
           __html: `
         @keyframes ticker-videos {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(50%); }
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(50%, 0, 0); }
         }
         .animate-ticker-videos {
           display: flex;
           width: max-content;
           animation: ticker-videos 60s linear infinite;
+          will-change: transform;
         }
         .ticker-container:hover .animate-ticker-videos {
           animation-play-state: paused;
@@ -51,50 +60,60 @@ export default function WorkVideos() {
 
       <div className="ticker-container relative w-full overflow-hidden z-10">
         <div className="animate-ticker-videos gap-4 md:gap-6 px-3">
-          {duplicatedVideos.map((videoSrc, index) => (
-            <div
-              key={index}
-              onClick={() => setSelectedVideo(videoSrc.split("#")[0])}
-              className="relative w-[180px] md:w-[240px] h-[320px] md:h-[400px] rounded-2xl overflow-hidden group cursor-pointer flex-shrink-0 border-2 border-[#00BFFF]/20 hover:border-[#D4AF37] transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(212,175,55,0.4)] bg-black"
-            >
-              <video
-                src={videoSrc}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                muted
-                playsInline
-                preload="metadata"
-              />
-              <div className="absolute inset-0 bg-[#030b1c]/30 group-hover:bg-transparent transition-colors duration-300 flex items-center justify-center">
-                <div className="w-14 h-14 rounded-full bg-[#D4AF37]/80 backdrop-blur-sm flex items-center justify-center text-[#030b1c] transform scale-90 group-hover:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.8)]">
-                  <Play className="w-6 h-6 ml-1" fill="currentColor" />
+          {duplicatedVideos.map((videoSrc, index) => {
+            // تحميل أول 6 فيديوهات فوراً والباقي بعد استقرار الشبكة
+            const shouldLoad = index < 6 || loadAll;
+
+            return (
+              <div
+                key={index}
+                onClick={() => setSelectedVideo(videoSrc.split("#")[0])}
+                className="relative w-[180px] md:w-[240px] h-[320px] md:h-[400px] rounded-2xl overflow-hidden group cursor-pointer flex-shrink-0 border-2 border-[#00BFFF]/20 hover:border-[#D4AF37] transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(212,175,55,0.4)] bg-[#030b1c]"
+              >
+                <video
+                  src={shouldLoad ? videoSrc : undefined}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none"
+                  muted
+                  playsInline
+                  preload={shouldLoad ? "metadata" : "none"}
+                />
+                <div className="absolute inset-0 bg-[#030b1c]/30 group-hover:bg-transparent transition-colors duration-300 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-full bg-[#D4AF37]/80 backdrop-blur-sm flex items-center justify-center text-[#030b1c] transform scale-90 group-hover:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.8)]">
+                    <Play className="w-6 h-6 ml-1" fill="currentColor" />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
       {selectedVideo && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#020612]/95 backdrop-blur-lg px-4 transition-opacity duration-300"
+          className="fixed inset-0 z-[999] flex items-center justify-center bg-[#020612]/95 backdrop-blur-lg px-4 transition-opacity duration-300"
           onClick={() => setSelectedVideo(null)}
         >
           <button
-            onClick={() => setSelectedVideo(null)}
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedVideo(null);
+            }}
             title="إغلاق الفيديو"
-            className="absolute top-6 right-6 md:top-10 md:right-10 w-12 h-12 rounded-full bg-[#030b1c] hover:bg-[#D4AF37] hover:text-[#030b1c] text-[#D4AF37] flex items-center justify-center transition-all duration-300 z-[120] border-2 border-[#D4AF37] shadow-[0_0_15px_rgba(212,175,55,0.5)]"
+            className="absolute top-6 right-6 md:top-10 md:right-10 w-12 h-12 rounded-full bg-[#030b1c] hover:bg-[#D4AF37] hover:text-[#030b1c] text-[#D4AF37] flex items-center justify-center transition-all duration-300 z-[1000] border-2 border-[#D4AF37] shadow-[0_0_15px_rgba(212,175,55,0.5)] cursor-pointer"
           >
             <X className="w-8 h-8" />
           </button>
 
           <div
-            className="relative w-full max-w-4xl max-h-[85vh] bg-black rounded-2xl overflow-hidden border-2 border-[#D4AF37] shadow-[0_0_50px_rgba(212,175,55,0.3)] animate-in fade-in zoom-in duration-300 z-[110]"
+            className="relative w-full max-w-4xl max-h-[85vh] bg-black rounded-2xl overflow-hidden border-2 border-[#D4AF37] shadow-[0_0_50px_rgba(212,175,55,0.3)] z-[999]"
             onClick={(e) => e.stopPropagation()}
           >
             <video
               src={selectedVideo}
               controls
               autoPlay
+              playsInline
               className="w-full h-full max-h-[85vh] object-contain"
             />
           </div>
