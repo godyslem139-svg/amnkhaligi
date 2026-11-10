@@ -16,18 +16,6 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
-// إعدادات تمنع خطأ الـ Prerender أثناء البناء
-export const dynamicParams = true;
-
-export async function generateStaticParams() {
-  try {
-    const posts = await client.fetch(`*[_type == "post"]{ "slug": slug.current }`);
-    return posts.map((post: any) => ({ slug: post.slug || "default" }));
-  } catch (error) {
-    return [];
-  }
-}
-
 async function getPostBySlug(slug: string) {
   const query = `*[_type == "post" && slug.current == $slug][0] {
     title,
@@ -49,7 +37,7 @@ async function getPostBySlug(slug: string) {
       }
     }
   }`;
-  return await client.fetch(query, { slug }, { cache: "no-store" });
+  return await client.fetch(query, { slug });
 }
 
 // مكونات تنسيق المحتوى الغني
@@ -209,7 +197,9 @@ const portableTextComponents: any = {
   },
 };
 
-async function PostContent({ slug }: { slug: string }) {
+// قراءة الـ params وجلب البيانات يتم بالكامل داخل هذا المكون المغلف بـ Suspense
+async function PostContent({ paramsPromise }: { paramsPromise: Promise<{ slug: string }> }) {
+  const { slug } = await paramsPromise;
   const decodedSlug = decodeURIComponent(slug);
   const post = await getPostBySlug(decodedSlug);
 
@@ -284,14 +274,12 @@ async function PostContent({ slug }: { slug: string }) {
   );
 }
 
-export default async function SingleBlogPostPage({
+// المكون الأب متزامن ولا يقوم بعمل await params خارج الـ Suspense نهائياً
+export default function SingleBlogPostPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const resolvedParams = await params;
-  const slug = resolvedParams.slug;
-
   return (
     <div className="relative min-h-screen bg-transparent text-white py-12 lg:py-20" dir="rtl">
       <div className="container mx-auto px-4 lg:px-8 max-w-4xl relative z-10">
@@ -307,7 +295,7 @@ export default async function SingleBlogPostPage({
         </div>
 
         <Suspense fallback={<div className="text-center py-20 text-[#D4AF37] font-bold text-xl">جاري تحميل المقال الهندسي...</div>}>
-          <PostContent slug={slug} />
+          <PostContent paramsPromise={params} />
         </Suspense>
       </div>
     </div>
