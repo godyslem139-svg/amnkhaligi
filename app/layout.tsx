@@ -31,7 +31,11 @@ export default function RootLayout({
       dir="rtl"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#030b1c]">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
+      <body className="min-h-full flex flex-col bg-[#030b1c]" suppressHydrationWarning>
         {/* فيديو الخلفية الثابت للموقع */}
         <video
           autoPlay

@@ -6,7 +6,8 @@ import { Play, X } from "lucide-react";
 export default function WorkVideos() {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
-  const videoFiles = "abcdefghijklmnopqrstuvwxyz".split("").map((char) => `/${char}.mp4`);
+  // إضافة #t=0.001 لجلب أول فريم كصورة معاينة تلقائياً
+  const videoFiles = "abcdefghijklmnopqrstuvwx".split("").map((char) => `/${char}.mp4#t=0.001`);
   const duplicatedVideos = [...videoFiles, ...videoFiles];
 
   useEffect(() => {
@@ -19,8 +20,9 @@ export default function WorkVideos() {
 
   return (
     <section className="relative w-full py-24 overflow-hidden" dir="rtl">
-      
-      <style dangerouslySetInnerHTML={{__html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @keyframes ticker-videos {
           0% { transform: translateX(0); }
           100% { transform: translateX(50%); }
@@ -33,7 +35,9 @@ export default function WorkVideos() {
         .ticker-container:hover .animate-ticker-videos {
           animation-play-state: paused;
         }
-      `}} />
+      `,
+        }}
+      />
 
       <div className="container mx-auto px-4 mb-16 relative z-10 text-center">
         <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-md">
@@ -50,8 +54,8 @@ export default function WorkVideos() {
           {duplicatedVideos.map((videoSrc, index) => (
             <div
               key={index}
-              onClick={() => setSelectedVideo(videoSrc)}
-              className="relative w-[180px] md:w-[240px] h-[320px] md:h-[400px] rounded-2xl overflow-hidden group cursor-pointer flex-shrink-0 border-2 border-[#00BFFF]/20 hover:border-[#D4AF37] transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]"
+              onClick={() => setSelectedVideo(videoSrc.split("#")[0])}
+              className="relative w-[180px] md:w-[240px] h-[320px] md:h-[400px] rounded-2xl overflow-hidden group cursor-pointer flex-shrink-0 border-2 border-[#00BFFF]/20 hover:border-[#D4AF37] transition-all duration-300 shadow-lg hover:shadow-[0_0_25px_rgba(212,175,55,0.4)] bg-black"
             >
               <video
                 src={videoSrc}
@@ -60,7 +64,7 @@ export default function WorkVideos() {
                 playsInline
                 preload="metadata"
               />
-              <div className="absolute inset-0 bg-[#030b1c]/40 group-hover:bg-[#030b1c]/10 transition-colors duration-300 flex items-center justify-center">
+              <div className="absolute inset-0 bg-[#030b1c]/30 group-hover:bg-transparent transition-colors duration-300 flex items-center justify-center">
                 <div className="w-14 h-14 rounded-full bg-[#D4AF37]/80 backdrop-blur-sm flex items-center justify-center text-[#030b1c] transform scale-90 group-hover:scale-110 transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.8)]">
                   <Play className="w-6 h-6 ml-1" fill="currentColor" />
                 </div>
@@ -71,11 +75,10 @@ export default function WorkVideos() {
       </div>
 
       {selectedVideo && (
-        <div 
+        <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-[#020612]/95 backdrop-blur-lg px-4 transition-opacity duration-300"
-          onClick={() => setSelectedVideo(null)} // الإغلاق عند الضغط على الخلفية
+          onClick={() => setSelectedVideo(null)}
         >
-          
           <button
             onClick={() => setSelectedVideo(null)}
             title="إغلاق الفيديو"
@@ -84,9 +87,9 @@ export default function WorkVideos() {
             <X className="w-8 h-8" />
           </button>
 
-          <div 
+          <div
             className="relative w-full max-w-4xl max-h-[85vh] bg-black rounded-2xl overflow-hidden border-2 border-[#D4AF37] shadow-[0_0_50px_rgba(212,175,55,0.3)] animate-in fade-in zoom-in duration-300 z-[110]"
-            onClick={(e) => e.stopPropagation()} // منع الإغلاق عند الضغط داخل الفيديو
+            onClick={(e) => e.stopPropagation()}
           >
             <video
               src={selectedVideo}
@@ -97,7 +100,6 @@ export default function WorkVideos() {
           </div>
         </div>
       )}
-
     </section>
   );
 }
