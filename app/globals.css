@@ -24,3 +24,22 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+@keyframes ticker-videos {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(50%, 0, 0);
+  }
+}
+
+.animate-ticker-videos {
+  display: flex;
+  width: max-content;
+  animation: ticker-videos 60s linear infinite;
+  will-change: transform;
+}
+
+.ticker-container:hover .animate-ticker-videos {
+  animation-play-state: paused;
+}
