@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import BlackFridayTicker from "@/components/BlackFridayTicker"; // استدعاء مكون شريط البلاك فراي داي
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,6 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className="min-h-full flex flex-col bg-[#030b1c]" suppressHydrationWarning>
-        {/* فيديو الخلفية الثابت للموقع */}
         <video
           autoPlay
           loop
@@ -47,11 +47,10 @@ export default function RootLayout({
           <source src="/hero.mp4" type="video/mp4" />
         </video>
 
-        {/* طبقة التعتيم */}
         <div className="fixed top-0 left-0 w-full h-screen bg-gradient-to-b from-[#030b1c]/80 via-[#030b1c]/70 to-[#030b1c]/90 -z-10"></div>
 
         <Header />
-
+        <BlackFridayTicker />
         <main className="flex-grow relative z-10">{children}</main>
 
         <Footer />

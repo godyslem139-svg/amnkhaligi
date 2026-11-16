@@ -24,3 +24,49 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ===================================================
+   حركة شريط عروض البلاك فراي داي المتحرك (Ticker Text)
+=================================================== */
+@keyframes ticker-text {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-ticker-text {
+  display: flex;
+  width: max-content;
+  animation: ticker-text 30s linear infinite;
+  will-change: transform;
+}
+
+.ticker-wrapper:hover .animate-ticker-text {
+  animation-play-state: paused; /* إيقاف الحركة عند وقوف الفأرة للقراءة */
+}
+
+/* ===================================================
+   حركة شريط الفيديوهات (Ticker Videos)
+=================================================== */
+@keyframes ticker-videos {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(50%, 0, 0);
+  }
+}
+
+.animate-ticker-videos {
+  display: flex;
+  width: max-content;
+  animation: ticker-videos 60s linear infinite;
+  will-change: transform;
+}
+
+.ticker-container:hover .animate-ticker-videos {
+  animation-play-state: paused;
+}
