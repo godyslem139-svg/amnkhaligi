@@ -101,11 +101,15 @@ export default function BlackFridayPage() {
           احمِ عقارك بـ <span className="text-[#00BFFF] drop-shadow-[0_0_15px_rgba(0,191,255,0.5)]">نصف السعر</span> في عروض <span className="text-[#D4AF37] drop-shadow-[0_0_15px_rgba(212,175,55,0.5)]">البلاك فراي داي</span>
         </h1>
 
+        {/* العنوان الفرعي الجديد H2 مع الخدمات */}
+        <h2 className="text-xl md:text-2xl font-bold text-[#00BFFF] mb-6 tracking-wide">
+          - كشف تسربات المياه وعزل أسطح وخزانات وجميع الخدمات -
+        </h2>
+
         <p className="text-gray-300 text-lg md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed">
           شركة <span className="text-white font-bold underline decoration-[#D4AF37]">أساس الأمن الخليجي</span> تكسر الأسعار وتطرح نظام خصم مزدوج غير مسبوق: <span className="text-[#D4AF37] font-bold">50% خصم على الكشف</span> + <span className="text-[#D4AF37] font-bold">50% خصم على التنفيذ والعمليات</span>.
         </p>
 
-        {/* أزرار الاتصال السريع */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-5 w-full">
           <Link
             href="https://wa.me/966501206816?text=مرحباً، أرغب في الاستفادة من عروض بلاك فراي داي (خصم 50% على الكشف والعمليات)"
@@ -148,16 +152,14 @@ export default function BlackFridayPage() {
         </div>
       </section>
 
-      {/* قسم تفاصيل العرض المزدوج (الـ 50% و 50%) */}
       <section className="py-20 px-4 max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-extrabold mb-4">تفاصيل عرض <span className="text-[#D4AF37]">البلاتينيوم المزدوج</span></h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">نظام خصم صُمم خصيصاً لمساعدتك على صيانة منزلك بالكامل بأقل ميزانية ممكنة خلال موسم الجمعة البيضاء</p>
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-4">تفاصيل عرض <span className="text-[#D4AF37]"> البلاك فرايداي</span></h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">نظام خصم صُمم خصيصاً لمساعدتك على صيانة منزلك بالكامل بأقل ميزانية ممكنة خلال موسم البلاك فرايداي</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           
-          {/* كارت عرض الكشف */}
           <div className="bg-[#050f24] border-2 border-[#00BFFF]/30 hover:border-[#00BFFF] rounded-3xl p-8 md:p-10 transition-all duration-300 shadow-2xl relative overflow-hidden group">
             <div className="absolute top-0 left-0 bg-[#00BFFF] text-[#030b1c] font-black px-6 py-2 rounded-br-2xl text-sm">
               الخصم الأول

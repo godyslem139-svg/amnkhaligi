@@ -118,11 +118,12 @@ export default function Header() {
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col gap-10">
             <div>
-              <h3 className="text-[#00BFFF] font-bold text-lg mb-6 flex items-center gap-2">
+              {/* تم تعديل الـ h3 إلى span لعدم التأثير على هيكلية السيو */}
+              <span className="text-[#00BFFF] font-bold text-lg mb-6 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
                 القائمة الرئيسية
-              </h3>
-              <nav className="flex flex-col gap-4">
+              </span>
+              <nav className="flex flex-col gap-4 mt-4">
                 {mainLinks.map((link, index) => (
                   <Link
                     key={index}
@@ -139,11 +140,12 @@ export default function Header() {
             </div>
 
             <div>
-              <h3 className="text-[#00BFFF] font-bold text-lg mb-6 flex items-center gap-2">
+              {/* تم تعديل الـ h3 إلى span لعدم التأثير على هيكلية السيو */}
+              <span className="text-[#00BFFF] font-bold text-lg mb-6 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
                 خدماتنا الاحترافية
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              </span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
                 {servicesLinks.map((service, index) => (
                   <Link
                     key={index}
