@@ -14,6 +14,7 @@ export default function Header() {
     { name: "المقالات", slug: "/blog", title: "مقالات ومدونة شركة أساس الأمن الخليجي" },
     { name: "من نحن", slug: "/about", title: "من نحن - تعرف على شركة أساس الأمن الخليجي" },
     { name: "تواصل معنا", slug: "/contact", title: "تواصل مع شركة أساس الأمن الخليجي بالخرج" },
+    { name: "البلاك فرايداي", slug: "/offers", title: "عروض  شركة أساس الأمن الخليجي بالخرج" },
   ];
 
   const servicesLinks = [
@@ -72,6 +73,7 @@ export default function Header() {
               <Link href="/blog" title="مقالات ومدونة شركة أساس الأمن الخليجي" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">المقالات</Link>
               <Link href="/about" title="من نحن - تعرف على شركة أساس الأمن الخليجي" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">من نحن</Link>
               <Link href="/contact" title="تواصل مع شركة أساس الأمن الخليجي بالخرج" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">تواصل معنا</Link>
+              <Link href="/offers" title="عروض شركة أساس الأمن الخليجي بالخرج" className="text-white hover:text-[#D4AF37] font-bold text-lg transition-colors">البلاك فرايداي</Link>
             </nav>
           </div>
 
