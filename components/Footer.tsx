@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -94,10 +95,10 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <h3 className="text-white font-bold text-lg mb-6 flex items-center gap-2">
+            <div className="text-white font-bold text-lg mb-6 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#00BFFF]"></span>
               روابط سريعة
-            </h3>
+            </div>
             <div className="flex flex-col gap-3">
               {mainLinks.map((link, index) => (
                 <Link
@@ -114,10 +115,10 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-5">
-            <h3 className="text-white font-bold text-lg mb-6 flex items-center gap-2">
+            <div className="text-white font-bold text-lg mb-6 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#00BFFF]"></span>
               خدماتنا الاحترافية
-            </h3>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {servicesLinks.map((service, index) => (
                 <Link

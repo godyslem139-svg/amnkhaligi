@@ -10,17 +10,13 @@ import {
   ShieldCheck,
   CheckCircle2,
   AlertCircle,
-  HelpCircle,
   ChevronDown,
   ChevronUp,
   MessageSquare,
   Wrench,
   Sparkles,
   PhoneCall,
-  Calendar,
-  Building,
   User,
-  Map,
 } from "lucide-react";
 
 interface ContactFAQ {
@@ -41,7 +37,6 @@ export default function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
-  // خدمات الشركة
   const servicesList = [
     "كشف تسربات المياه",
     "عزل أسطح (مائي وحراري)",
@@ -151,7 +146,8 @@ export default function ContactPage() {
                 <div className="w-16 h-16 rounded-2xl bg-[#00BFFF]/10 border border-[#00BFFF]/40 flex items-center justify-center text-[#00BFFF] group-hover:bg-[#D4AF37] group-hover:text-[#030b1c] group-hover:border-[#D4AF37] transition-all mb-6">
                   <PhoneCall className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">اتصال هاتفي مباشر</h3>
+                {/* تم استبدال h3 بـ div لتجنب ظهورها في هرمية السيو */}
+                <div className="text-2xl font-bold text-white mb-2">اتصال هاتفي مباشر</div>
                 <p className="text-gray-300 text-sm leading-relaxed mb-6">
                   تواصل هاتفياً مع خدمة العملاء لطلب الاستشارات السريعة وحجز المواعيد الفورية في الخرج.
                 </p>
@@ -173,7 +169,8 @@ export default function ContactPage() {
                 <div className="w-16 h-16 rounded-2xl bg-[#D4AF37]/15 border border-[#D4AF37] flex items-center justify-center text-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-[#030b1c] transition-all mb-6">
                   <MessageSquare className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">محادثة واتساب 24/7</h3>
+                {/* تم استبدال h3 بـ div لتجنب ظهورها في هرمية السيو */}
+                <div className="text-2xl font-bold text-white mb-2">محادثة واتساب 24/7</div>
                 <p className="text-gray-300 text-sm leading-relaxed mb-6">
                   أرسل موقع منزلك، صور أو فيديوهات التسرب والرطوبة لنقدم لك تشخيصاً مبدئياً وتسعيراً فورياً.
                 </p>
@@ -194,7 +191,8 @@ export default function ContactPage() {
                 <div className="w-16 h-16 rounded-2xl bg-[#00BFFF]/10 border border-[#00BFFF]/40 flex items-center justify-center text-[#00BFFF] group-hover:bg-[#D4AF37] group-hover:text-[#030b1c] group-hover:border-[#D4AF37] transition-all mb-6">
                   <MapPin className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">النطاق والمركز الميداني</h3>
+                {/* تم استبدال h3 بـ div لتجنب ظهورها في هرمية السيو */}
+                <div className="text-2xl font-bold text-white mb-2">النطاق والمركز الميداني</div>
                 <p className="text-gray-300 text-sm leading-relaxed mb-6">
                   المقر الرئيسي: مدينة الخرج - السيح، مع أسطول سيارات متنقل يغطي كافة الأحياء والمراكز التابعة.
                 </p>
@@ -213,7 +211,6 @@ export default function ContactPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
-            {/* نموذج طلب الحجز الذكي */}
             <div className="lg:col-span-7 bg-[#061124]/95 border-2 border-[#D4AF37] rounded-3xl p-6 sm:p-10 shadow-[0_0_40px_rgba(212,175,55,0.2)]">
               <div className="mb-8">
                 <span className="text-[#00BFFF] text-xs font-bold bg-[#00BFFF]/10 px-3 py-1 rounded-md border border-[#00BFFF]/30">
@@ -363,7 +360,8 @@ export default function ContactPage() {
                     <ShieldCheck className="w-7 h-7" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-extrabold text-white">تعهد الجودة والمصداقية</h3>
+                    {/* تم استبدال h3 بـ div لتجنب ظهورها في هرمية السيو */}
+                    <div className="text-xl font-extrabold text-white">تعهد الجودة والمصداقية</div>
                     <p className="text-xs text-[#D4AF37]">معايير أساس الأمن الخليجي الصارمة</p>
                   </div>
                 </div>
@@ -391,7 +389,8 @@ export default function ContactPage() {
               <div className="bg-[#061124]/90 border border-[#D4AF37]/40 rounded-3xl p-7 shadow-[0_0_20px_rgba(212,175,55,0.15)] flex items-center justify-between gap-4">
                 <div className="space-y-1">
                   <span className="text-xs text-[#00BFFF] font-bold">شاهد شغلنا الحقيقي صوت وصورة</span>
-                  <h4 className="text-lg font-bold text-white">حسابنا الرسمي على تيك توك</h4>
+                  {/* تم استبدال h4 بـ div لتجنب ظهورها في هرمية السيو */}
+                  <div className="text-lg font-bold text-white">حسابنا الرسمي على تيك توك</div>
                   <p className="text-xs text-gray-400">فيديوهات يومية لعمليات كشف التسربات والعزل بالخرج</p>
                 </div>
                 <Link
@@ -443,9 +442,10 @@ export default function ContactPage() {
                     onClick={() => setOpenFaqIndex(isOpen ? null : index)}
                     className="w-full p-5 sm:p-6 text-right flex items-center justify-between gap-4 focus:outline-none"
                   >
-                    <h3 className={`text-base sm:text-lg font-bold ${isOpen ? "text-[#D4AF37]" : "text-white"}`}>
+                    {/* تم استبدال h3 بـ div وتطبيق التنسيق */}
+                    <div className={`text-base sm:text-lg font-bold ${isOpen ? "text-[#D4AF37]" : "text-white"}`}>
                       {faq.question}
-                    </h3>
+                    </div>
                     <div
                       className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-colors ${
                         isOpen ? "bg-[#D4AF37] text-[#030b1c]" : "bg-[#00BFFF]/10 text-[#00BFFF]"

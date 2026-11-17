@@ -124,8 +124,9 @@ function VideoCard({ src, onClick }: { src: string, onClick: () => void }) {
       onClick={onClick}
       className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden group cursor-pointer border-[3px] border-[#D4AF37] hover:border-[#00BFFF] transition-all duration-500 shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(0,191,255,0.6)] flex-shrink-0"
     >
+      {/* إضافة #t=0.001 لضمان جلب إطار المعاينة دون تحميل الملف بالكامل */}
       <video
-        src={src}
+        src={`${src}#t=0.001`}
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         muted
         playsInline

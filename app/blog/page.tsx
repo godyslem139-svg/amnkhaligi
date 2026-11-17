@@ -15,7 +15,6 @@ async function getPosts() {
     readingTime,
     publishedAt
   }`;
-  // استخدام التخزين المؤقت المتوافق مع Next.js الحديث
   return await client.fetch(query, {}, { next: { revalidate: 60 } });
 }
 
@@ -45,9 +44,10 @@ export default async function BlogIndexPage() {
         {posts.length === 0 ? (
           <div className="bg-[#061124]/90 border-2 border-[#D4AF37]/50 rounded-3xl p-12 text-center max-w-2xl mx-auto">
             <BookOpen className="w-16 h-16 text-[#D4AF37] mx-auto mb-4" />
-            <h2 className="text-2xl font-extrabold text-white mb-2">
+            {/* تم تغيير h2 إلى div لتجنب ظهور عنوان ترويسة في الحالة الفارغة */}
+            <div className="text-2xl font-extrabold text-white mb-2">
               لوحة التحكم جاهزة لنشر مقالك الأول!
-            </h2>
+            </div>
             <p className="text-gray-300 text-sm mb-6">
               توجه إلى لوحة تحكم Sanity عبر الرابط (/studio) وابدأ بإضافة مقالاتك وصورك وفيديوهاتك بسهولة.
             </p>
@@ -103,11 +103,12 @@ export default async function BlogIndexPage() {
                       </span>
                     </div>
 
-                    <h2 className="text-xl font-extrabold text-white group-hover:text-[#D4AF37] transition-colors mb-3 leading-snug">
+                    {/* تم استبدال h2 بـ div مع الحفاظ على كامل التنسيق لكي لا يظهر عنوان ترويسة وهمي في تقرير السيو لكل كارت مقال */}
+                    <div className="text-xl font-extrabold text-white group-hover:text-[#D4AF37] transition-colors mb-3 leading-snug">
                       <Link href={`/blog/${post.slug}`} title={post.title}>
                         {post.title}
                       </Link>
-                    </h2>
+                    </div>
 
                     <p className="text-gray-300 text-sm leading-relaxed line-clamp-3">
                       {post.excerpt}
