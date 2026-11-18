@@ -605,7 +605,7 @@ export default function WaterLeakDetectionPage() {
 
               <p className="text-gray-300 text-base sm:text-xl leading-relaxed">
                 هل تعاني من ارتفاع مفاجئ في فاتورة المياه؟ أو ظهور رطوبة وتصدعات في الأسقف والجدران؟ في{" "}
-                <strong className="text-white">شركة أساس الأمن الخليجي</strong> نضع حداً نهائياً لنزيف المياه الخفي باستخدام أجهزة الأكوافون والكاميرات الحرارية وغاز النيتروجين بدقة{" "}
+                <strong className="text-white">شركة أساس الأمن الخليجي </strong>خبرة فى فحص المنازل و كشف التسربات وعلاجها و عزل الاسطح  نضع حداً نهائياً لنزيف المياه الخفي باستخدام أجهزة الأكوافون والكاميرات الحرارية وغاز النيتروجين بدقة  {" "}
                 <strong className="text-[#D4AF37]">99.6%</strong>، مع إصدار تقارير فنية معتمدة وضمان رسمي يصل إلى{" "}
                 <strong className="text-[#00BFFF]">10 سنوات</strong>.
               </p>
@@ -757,7 +757,7 @@ export default function WaterLeakDetectionPage() {
                 أداة التشخيص الذكي التفاعلية من أساس الأمن الخليجي
               </span>
               <h2 className="text-2xl sm:text-4xl font-extrabold text-white mb-3">
-                افحص علامات التسرب في منزلك واحسب <span className="text-[#D4AF37]">حجم الهدر المائي</span>
+                افحص علامات وجود التسرب في منزلك واحسب <span className="text-[#D4AF37]">حجم الهدر المائي</span>
               </h2>
               <p className="text-gray-300 text-sm sm:text-base">
                 قم بتحديد المشاكل أو العلامات التي تلاحظها في عقارك حالياً، وسيقوم النظام بتقدير درجة الخطورة وكمية المياه المفقودة شهرياً مع التوصية الهندسية المناسبة:
@@ -913,8 +913,10 @@ export default function WaterLeakDetectionPage() {
               توثيق ميداني من مواقع العمل
             </span>
             <h2 className="text-3xl md:text-5xl font-extrabold mt-4 mb-4">
-              تقنياتنا في <span className="text-[#00BFFF]">كشف ومعالجة التسربات</span> عن قرب
-            </h2>
+              لماذا نحن أفضل شركة كشف تسربات المياه في الخرج <span className="text-[#00BFFF]"></span>             </h2>
+            <p className="text-3xl md:text-5xl font-extrabold mt-4 mb-4">
+              تقنياتنا في <span className="text-[#00BFFF]">كشف ومعالجة التسربات هى الاحدث فى كشف وعلاج التسريب</span> عن قرب
+            </p>
             <p className="text-gray-300 text-lg">
               اضغط على أي صورة لتكبيرها واستعراض التفاصيل الهندسية للأجهزة وطرق المعالجة التي نطبقها في الخرج
             </p>
@@ -1527,8 +1529,7 @@ export default function WaterLeakDetectionPage() {
               </span>
 
               <h2 className="text-3xl sm:text-5xl font-extrabold text-white mb-6 leading-tight">
-                أوقف نزيف المياه واحمِ عقارك من التصدعات اليوم!
-              </h2>
+                أوقف نزيف المياه مع شركة فحص منازل بالخرج واحمِ عقارك من التصدعات              </h2>
 
               <p className="text-gray-300 text-lg sm:text-xl mb-10 leading-relaxed">
                 كل يوم يتأخر فيه كشف التسرب يعني المزيد من الهدر المائي وارتفاع الفاتورة وتضرر الخرسانة. تواصل الآن مع مهندسي{" "}
