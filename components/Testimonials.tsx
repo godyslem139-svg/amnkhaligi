@@ -61,9 +61,9 @@ export default function Testimonials() {
         <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-md">
           ماذا يقول <span className="text-[#D4AF37]">عملاؤنا؟</span>
         </h2>
-        <p className="text-gray-300 text-lg mb-4">
+        <h3 className="text-gray-300 text-lg mb-4">
           نفخر بثقة عملائنا في الخرج ونسعى دائماً لتقديم أفضل الخدمات
-        </p>
+        </h3>
         <div className="w-24 h-1 bg-[#00BFFF] mx-auto rounded-full"></div>
       </div>
 
