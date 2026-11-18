@@ -4,6 +4,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
 import { client, urlFor } from "@/sanity/lib/client";
+import JsonLd from "@/components/JsonLd";
+import { businessId, siteUrl } from "@/lib/structured-data";
 import {
   Calendar,
   Clock,
@@ -207,8 +209,30 @@ async function PostContent({ paramsPromise }: { paramsPromise: Promise<{ slug: s
     notFound();
   }
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.seoTitle || post.title,
+    description: post.seoDescription || post.excerpt || undefined,
+    image: post.mainImage
+      ? urlFor(post.mainImage).width(1200).height(675).url()
+      : undefined,
+    datePublished: post.publishedAt || undefined,
+    author: {
+      "@type": "Organization",
+      name: "أساس الأمن الخليجي",
+    },
+    publisher: { "@id": businessId },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${siteUrl}/blog/${encodeURIComponent(post.slug)}`,
+    },
+    inLanguage: "ar-SA",
+  };
+
   return (
     <article className="bg-[#061124]/95 border-2 border-[#D4AF37]/60 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-[0_0_45px_rgba(0,0,0,0.6)]">
+      <JsonLd data={articleJsonLd} />
       <div className="flex flex-wrap items-center gap-3 mb-4">
         <span className="bg-[#D4AF37] text-[#030b1c] text-xs font-black px-3.5 py-1 rounded-lg">
           {post.category || "مقال هندسي"}

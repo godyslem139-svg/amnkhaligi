@@ -5,6 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import BlackFridayTicker from "@/components/BlackFridayTicker"; // استدعاء مكون شريط البلاك فراي داي
+import JsonLd from "@/components/JsonLd";
+import { businessJsonLd } from "@/lib/structured-data";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +39,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className="min-h-full flex flex-col bg-[#030b1c]" suppressHydrationWarning>
+        <JsonLd data={businessJsonLd} />
         <video
           autoPlay
           loop
