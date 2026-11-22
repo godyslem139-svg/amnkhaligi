@@ -18,6 +18,8 @@ export default function Footer() {
     { name: "المقالات", slug: "/blog", title: "مقالات ومدونة شركة أساس الأمن الخليجي" },
     { name: "من نحن", slug: "/about", title: "من نحن - تعرف على شركة أساس الأمن الخليجي" },
     { name: "تواصل معنا", slug: "/contact", title: "تواصل مع شركة أساس الأمن الخليجي بالخرج" },
+    { name: "غسيل سجاد ومجالس", slug: "/services/carpet-and-majlis-cleaning", title: "خدمة غسيل سجاد ومجالس وكنب بالبخار بالخرج" },
+    { name: "تنظيف أفران", slug: "/services/oven-cleaning", title: "خدمة تنظيف وصيانة أفران الغاز والكهرباء بالخرج" },
   ];
 
   const servicesLinks = [

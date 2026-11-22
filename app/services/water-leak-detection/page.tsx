@@ -115,11 +115,6 @@ interface LeakFAQ {
   answer: string;
   category: string;
 }
-
-// ============================================================================
-// 2. Comprehensive Data Constants (البيانات الموسوعية والصور الأربعة)
-// ============================================================================
-
 const SERVICE_IMAGES: GalleryImage[] = [
   {
     id: 1,
@@ -502,10 +497,6 @@ const LEAK_FAQS: LeakFAQ[] = [
   },
 ];
 
-// ============================================================================
-// 3. Main Component (المكون الرئيسي لصفحة كشف تسربات المياه)
-// ============================================================================
-
 export default function WaterLeakDetectionPage() {
   // States for Interactive Components
   const [activeHeroImage, setActiveHeroImage] = useState<number>(0);
@@ -568,10 +559,6 @@ export default function WaterLeakDetectionPage() {
 
   return (
     <div className="relative min-h-screen bg-transparent text-white overflow-hidden" dir="rtl">
-      
-      {/* =====================================================================
-          SECTION 1: HERO SECTION WITH INTERACTIVE IMAGE SHOWCASE
-      ===================================================================== */}
       <section className="relative pt-10 pb-20 lg:pt-16 lg:pb-28 border-b border-[#00BFFF]/20">
         {/* Glow Effects */}
         <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#00BFFF]/10 rounded-full blur-[130px] pointer-events-none"></div>
@@ -590,7 +577,6 @@ export default function WaterLeakDetectionPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Right Column: Hero Copy & Conversion Triggers */}
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 bg-[#D4AF37]/15 border border-[#D4AF37] text-[#D4AF37] px-4 py-2 rounded-full text-xs sm:text-sm font-extrabold shadow-[0_0_20px_rgba(212,175,55,0.25)]">
                 <Sparkles className="w-4 h-4" />

@@ -25,6 +25,8 @@ export default function Header() {
     { name: "رش مبيدات", slug: "/services/pest-control", title: "خدمة رش مبيدات ومكافحة حشرات بالخرج" },
     { name: "غسيل مكيفات", slug: "/services/ac-washing", title: "خدمة غسيل وصيانة مكيفات بالخرج" },
     { name: "غسيل خزانات", slug: "/services/tank-cleaning", title: "خدمة غسيل وتعقيم وعزل خزانات بالخرج" },
+    { name: "غسيل سجاد ومجالس", slug: "/services/carpet-and-majlis-cleaning", title: "خدمة غسيل سجاد ومجالس وكنب بالبخار بالخرج" },
+    { name: "تنظيف أفران", slug: "/services/oven-cleaning", title: "خدمة تنظيف وصيانة أفران الغاز والكهرباء بالخرج" },
   ];
 
   return (
@@ -120,7 +122,6 @@ export default function Header() {
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col gap-10">
             <div>
-              {/* تم تعديل الـ h3 إلى span لعدم التأثير على هيكلية السيو */}
               <span className="text-[#00BFFF] font-bold text-lg mb-6 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
                 القائمة الرئيسية
@@ -142,7 +143,6 @@ export default function Header() {
             </div>
 
             <div>
-              {/* تم تعديل الـ h3 إلى span لعدم التأثير على هيكلية السيو */}
               <span className="text-[#00BFFF] font-bold text-lg mb-6 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
                 خدماتنا الاحترافية
