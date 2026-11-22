@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { siteUrl } from '@/lib/structured-data';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/private/', '/admin/'],
     },
-    sitemap: 'https://www.uniquee-ws.com/sitemap.xml',
+    sitemap: `${siteUrl}/sitemap.xml`,
   };
 }

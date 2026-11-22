@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 import { 
   MessageCircle, 
   PhoneCall, 
@@ -76,10 +77,7 @@ export default function BlackFridayPage() {
     <div className="min-h-screen bg-[#030b1c] text-white overflow-hidden" dir="rtl">
       
       {/* ترميز السيو Schema.org */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
 
       {/* شريط التنبيه العلوي للعرض المحدود */}
       <div className="bg-gradient-to-r from-[#D4AF37] via-yellow-500 to-[#D4AF37] text-[#030b1c] py-3 px-4 text-center font-extrabold text-sm md:text-base shadow-lg animate-pulse flex items-center justify-center gap-2">

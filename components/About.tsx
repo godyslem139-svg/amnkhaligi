@@ -30,7 +30,7 @@ export default function About() {
                   <Crosshair className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-xl mb-1">دقة بدون تكسير</h4>
+                  <h3 className="text-white font-bold text-xl mb-1">دقة بدون تكسير</h3>
                   <p className="text-gray-400 text-base">استخدام أحدث الأجهزة الصوتية والحرارية لتحديد موقع الخلل بدقة متناهية.</p>
                 </div>
               </div>
@@ -40,7 +40,7 @@ export default function About() {
                   <ShieldCheck className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-xl mb-1">ضمان ذهبي شامل</h4>
+                  <h3 className="text-white font-bold text-xl mb-1">ضمان ذهبي شامل</h3>
                   <p className="text-gray-400 text-base">مواد عزل أصلية وخدمات صيانة موثقة بضمان فعلي يحمي حقوقك.</p>
                 </div>
               </div>
@@ -50,7 +50,7 @@ export default function About() {
                   <Clock className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-xl mb-1">سرعة الاستجابة</h4>
+                  <h3 className="text-white font-bold text-xl mb-1">سرعة الاستجابة</h3>
                   <p className="text-gray-400 text-base">فريق طوارئ متكامل مستعد لتلبية طلباتك والتدخل السريع في أي وقت.</p>
                 </div>
               </div>

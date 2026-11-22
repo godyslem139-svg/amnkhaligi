@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
+import { siteUrl } from '@/lib/structured-data';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://www.uniquee-ws.com';
+  const baseUrl = siteUrl;
 
   const routes = [
     '',
@@ -24,7 +25,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/services/pest-control',
     '/services/ac-washing',
     '/services/tank-cleaning',
-    '/services/ac-washing',
   ].map((slug) => ({
     url: `${baseUrl}${slug}`,
     lastModified: new Date(),
