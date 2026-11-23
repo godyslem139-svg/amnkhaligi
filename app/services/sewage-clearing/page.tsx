@@ -1748,9 +1748,6 @@ export default function SewageClearingPage() {
         </div>
       </section>
 
-      {/* =====================================================================
-          SECTION 9: COMPREHENSIVE FAQS (الأسئلة الشائعة حول تسليك المجاري)
-      ===================================================================== */}
       <section className="py-20 relative z-10 border-t border-[#00BFFF]/20">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
           <div className="text-center mb-14">
@@ -1816,10 +1813,6 @@ export default function SewageClearingPage() {
           </div>
         </div>
       </section>
-
-      {/* =====================================================================
-          SECTION 10: FINAL CALL TO ACTION & INTERLINKING
-      ===================================================================== */}
       <section className="py-20 relative z-10 border-t border-[#D4AF37]/20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="bg-gradient-to-r from-[#061124] via-[#0a1d3b] to-[#061124] border-2 border-[#D4AF37] rounded-3xl p-8 sm:p-14 text-center shadow-[0_0_50px_rgba(212,175,55,0.3)]">
