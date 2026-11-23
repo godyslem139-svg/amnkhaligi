@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.amnkhaligi.com/services/pest-control",
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: "شركة رش مبيدات ومكافحة حشرات بالخرج | أساس الأمن الخليجي",
     description:

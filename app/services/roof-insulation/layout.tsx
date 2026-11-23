@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.amnkhaligi.com/services/roof-insulation",
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: "شركة عزل أسطح بالخرج | عزل فوم ومائي وحراري",
     description:

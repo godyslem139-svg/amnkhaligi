@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.amnkhaligi.com/services/sewage-clearing",
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: "شركة تسليك مجاري بالخرج | تسليك بالضغط وسحب بيارات",
     description:

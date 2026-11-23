@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import BlackFridayTicker from "@/components/BlackFridayTicker"; // استدعاء مكون شريط البلاك فراي داي
+import BlackFridayTicker from "@/components/BlackFridayTicker";
 import JsonLd from "@/components/JsonLd";
 import { businessJsonLd } from "@/lib/structured-data";
 
@@ -19,8 +19,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: " 0501206816 شركة عزل و كشف تسربات في الخرج |ضمان معتمد 10سنين",
-  description: "شركة عزل و كشف تسربات في الخرج . عزل خزانات و كشف تسربات المياه و ترميم و غسيل سجاد و مفروشات و وتسليك مجارى و رش مبيدات حشرية متخصصة و معتمدة | 0501206816",
+  metadataBase: new URL("https://www.amnkhaligi.com"),
+  title: "0501206816 شركة عزل و كشف تسربات في الخرج | ضمان معتمد 10 سنين",
+  description:
+    "شركة عزل و كشف تسربات في الخرج . عزل خزانات و كشف تسربات المياه و ترميم و غسيل سجاد و مفروشات و وتسليك مجارى و رش مبيدات حشرية متخصصة و معتمدة | 0501206816",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -45,6 +55,7 @@ export default function RootLayout({
           loop
           muted
           playsInline
+          preload="metadata"
           className="fixed top-0 left-0 w-full h-screen object-cover -z-20"
         >
           <source src="/hero.mp4" type="video/mp4" />

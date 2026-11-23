@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.amnkhaligi.com/services/water-leak-detection",
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: "شركة كشف تسربات المياه بالخرج | فحص بدون تكسير وتقارير معتمدة - أساس الأمن الخليجي",
     description:

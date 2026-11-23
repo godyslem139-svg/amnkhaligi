@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.amnkhaligi.com/services/tank-cleaning",
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: "شركة غسيل وعزل خزانات بالخرج | تنظيف وتعقيم شامل",
     description:
